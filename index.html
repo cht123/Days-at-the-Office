@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days in Office - Effortless Office Attendance Tracking</title>
+    <meta name="description" content="Automatically track your office attendance with GPS-powered geofencing. Perfect for hybrid workers and contractors who need proof of workplace compliance.">
+    <meta name="keywords" content="office attendance, hybrid work, location tracking, work from office, RTO compliance, contractor attendance">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --primary-dark: #0f2442;
+            --accent: #4299e1;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: var(--bg-alt);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-preview {
+            width: 280px;
+            height: 560px;
+            background: var(--primary);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 40px 80px rgba(26, 54, 93, 0.3);
+        }
+
+        .app-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .app-screen svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+        }
+
+        .app-screen .days-count {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .app-screen .days-label {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-alt);
+            border-radius: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            padding: 100px 0;
+            background: var(--bg-alt);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .use-case-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .use-case-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .use-case-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .use-case-card li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .use-case-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Best Value";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .pricing-card li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-card li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Business Section */
+        .business {
+            padding: 100px 0;
+            background: var(--primary);
+            color: white;
+        }
+
+        .business .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .business h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .business p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .business ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .business li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .business li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .business .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .business .btn-primary:hover {
+            background: var(--bg-alt);
+        }
+
+        /* Support Section */
+        .support {
+            padding: 100px 0;
+            background: var(--bg-alt);
+        }
+
+        .support-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .support-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .support-content > p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .support-option {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .support-option h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .support-option p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .support-option a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .support-option a:hover {
+            text-decoration: underline;
+        }
+
+        /* Legal Sections */
+        .legal {
+            padding: 80px 0;
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            padding-top: 40px;
+        }
+
+        .legal h2:first-child {
+            padding-top: 0;
+        }
+
+        .legal .last-updated {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+
+        .legal h3 {
+            font-size: 1.25rem;
+            color: var(--primary-light);
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+
+        .legal p {
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .legal ul {
+            margin: 16px 0 16px 24px;
+            color: var(--text);
+        }
+
+        .legal li {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .footer-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .app-preview {
+                width: 240px;
+                height: 480px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .business .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z" fill="#1a365d"/>
+                    <circle cx="50" cy="40" r="22" fill="white"/>
+                    <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Days in Office
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+            </ul>
+            <button class="mobile-menu" aria-label="Menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Track Your Office Days Effortlessly</h1>
+                <p>Automatic location-based attendance tracking for hybrid workers and contractors. Know exactly how many days you've been in the office—without lifting a finger.</p>
+                <div class="hero-buttons">
+                    <a href="https://apps.apple.com/app/days-in-office" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download on App Store
+                    </a>
+                    <a href="#business" class="btn btn-secondary">Business Solutions</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="app-preview">
+                    <div class="app-screen">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z" fill="#1a365d"/>
+                            <circle cx="50" cy="40" r="22" fill="white"/>
+                            <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="days-count">12</div>
+                        <div class="days-label">days this month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Set up your office location once, and let the app do the rest. No manual check-ins, no time tracking apps to remember.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Automatic Detection</h3>
+                    <p>GPS-powered geofencing detects when you arrive and leave your office. No manual clock-in required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Configurable Thresholds</h3>
+                    <p>Set minimum hours to count as a "qualified day." Perfect for RTO policies requiring specific attendance durations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3>Monthly Analytics</h3>
+                    <p>View detailed reports of your office attendance patterns, daily breakdowns, and monthly summaries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>All your location data stays on your device. We never upload or store your location history on our servers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Multiple Locations</h3>
+                    <p>Track attendance across multiple office locations. Ideal for employees who work from different sites.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Battery Efficient</h3>
+                    <p>Built on iOS's native geofencing technology, using minimal battery while running in the background.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who It's For</h2>
+                <p>Whether you're tracking your own attendance or need proof of compliance, Days in Office has you covered.</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <h3>
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        Hybrid Workers
+                    </h3>
+                    <p>Keep track of your return-to-office compliance without the mental overhead of manual tracking.</p>
+                    <ul>
+                        <li>Meet company RTO requirements with confidence</li>
+                        <li>Prove your in-office presence when needed</li>
+                        <li>Plan your week based on attendance patterns</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Contractors & Consultants
+                    </h3>
+                    <p>Document your on-site presence for client billing, compliance requirements, or contract obligations.</p>
+                    <ul>
+                        <li>Maintain accurate records for invoicing</li>
+                        <li>Satisfy client site attendance requirements</li>
+                        <li>Track time across multiple client locations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Start free, upgrade when you need more locations.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">$0</div>
+                    <p class="price-note">Forever free</p>
+                    <ul>
+                        <li>1 office location</li>
+                        <li>Automatic tracking</li>
+                        <li>Monthly summaries</li>
+                        <li>Configurable day threshold</li>
+                    </ul>
+                    <a href="https://apps.apple.com/app/days-in-office" class="btn btn-secondary" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Annual</h3>
+                    <div class="price">$39.99<span>/year</span></div>
+                    <p class="price-note">Save 33% vs monthly</p>
+                    <ul>
+                        <li>Up to 5 office locations</li>
+                        <li>Automatic tracking</li>
+                        <li>Advanced analytics</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://apps.apple.com/app/days-in-office" class="btn btn-primary" style="width: 100%; justify-content: center;">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Monthly</h3>
+                    <div class="price">$4.99<span>/month</span></div>
+                    <p class="price-note">Cancel anytime</p>
+                    <ul>
+                        <li>Up to 5 office locations</li>
+                        <li>Automatic tracking</li>
+                        <li>Advanced analytics</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://apps.apple.com/app/days-in-office" class="btn btn-secondary" style="width: 100%; justify-content: center;">Subscribe Monthly</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Section -->
+    <section class="business" id="business">
+        <div class="container">
+            <div class="business-content">
+                <h2>Enterprise Solutions Coming Soon</h2>
+                <p>We're building tools for organizations that need to track workplace attendance across teams while respecting employee privacy.</p>
+                <ul>
+                    <li>Aggregate compliance reporting without individual location tracking</li>
+                    <li>Admin dashboard for policy configuration</li>
+                    <li>Integration with HR systems</li>
+                    <li>Custom deployment options</li>
+                </ul>
+                <p>Interested in bringing Days in Office to your organization?</p>
+                <a href="mailto:business@daysinoffice.app" class="btn btn-primary">Contact Us for Early Access</a>
+            </div>
+            <div class="business-visual">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="40" y="60" width="320" height="200" rx="8" fill="white" opacity="0.1"/>
+                    <rect x="60" y="90" width="120" height="80" rx="4" fill="white" opacity="0.15"/>
+                    <rect x="200" y="90" width="140" height="36" rx="4" fill="white" opacity="0.15"/>
+                    <rect x="200" y="134" width="140" height="36" rx="4" fill="white" opacity="0.15"/>
+                    <rect x="60" y="190" width="280" height="50" rx="4" fill="white" opacity="0.15"/>
+                    <circle cx="100" cy="130" r="20" fill="#4299e1" opacity="0.8"/>
+                    <text x="100" y="136" text-anchor="middle" fill="white" font-size="14" font-weight="600">87%</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <div class="container">
+            <div class="support-content">
+                <h2>Need Help?</h2>
+                <p>We're here to make sure you get the most out of Days in Office.</p>
+                <div class="support-options">
+                    <div class="support-option">
+                        <h3>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Email Support
+                        </h3>
+                        <p>Have a question or running into an issue? Our support team typically responds within 24 hours.</p>
+                        <a href="mailto:support@daysinoffice.app">support@daysinoffice.app</a>
+                    </div>
+                    <div class="support-option">
+                        <h3>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            FAQs
+                        </h3>
+                        <p>Find answers to common questions about location permissions, battery usage, and tracking accuracy.</p>
+                        <a href="#faq">View Common Questions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Sections -->
+    <section class="legal" id="privacy">
+        <div class="container">
+            <div class="legal-content">
+                <h2>Privacy Policy</h2>
+                <p class="last-updated">Last updated: November 2024</p>
+
+                <p>Days in Office ("we," "our," or "the app") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+
+                <h3>Information We Collect</h3>
+                <p><strong>Location Data:</strong> The app uses your device's GPS to detect when you enter and exit designated office locations. This location data is processed entirely on your device and is never transmitted to our servers.</p>
+                <p><strong>Usage Data:</strong> We may collect anonymous, aggregated usage statistics to improve app performance. This data cannot be used to identify individual users.</p>
+
+                <h3>How We Use Your Information</h3>
+                <p>Your location data is used solely to determine your presence at configured office locations and calculate your attendance. We do not:</p>
+                <ul>
+                    <li>Upload your location data to any server</li>
+                    <li>Share your location data with third parties</li>
+                    <li>Track your location outside of configured office geofences</li>
+                    <li>Sell or monetize your personal data in any way</li>
+                </ul>
+
+                <h3>Data Storage</h3>
+                <p>All attendance records and location data are stored locally on your device. If you delete the app, all associated data is permanently removed. We do not maintain backups of your personal data.</p>
+
+                <h3>Third-Party Services</h3>
+                <p>The app uses Apple's StoreKit for subscription management. Payment processing is handled entirely by Apple, and we do not have access to your payment information.</p>
+
+                <h3>Your Rights</h3>
+                <p>You have full control over your data. You can:</p>
+                <ul>
+                    <li>Revoke location permissions at any time in your device settings</li>
+                    <li>Delete all app data by uninstalling the app</li>
+                    <li>Export your attendance data from within the app</li>
+                </ul>
+
+                <h3>Children's Privacy</h3>
+                <p>Days in Office is not intended for use by children under 13. We do not knowingly collect personal information from children.</p>
+
+                <h3>Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+
+                <h3>Contact Us</h3>
+                <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:privacy@daysinoffice.app">privacy@daysinoffice.app</a>.</p>
+
+                <h2 id="terms">Terms of Service</h2>
+                <p class="last-updated">Last updated: November 2024</p>
+
+                <p>By downloading, installing, or using Days in Office, you agree to be bound by these Terms of Service.</p>
+
+                <h3>License</h3>
+                <p>We grant you a limited, non-exclusive, non-transferable license to use the app for personal or professional attendance tracking purposes.</p>
+
+                <h3>Acceptable Use</h3>
+                <p>You agree to use the app only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+                <ul>
+                    <li>Use the app to track anyone other than yourself without their consent</li>
+                    <li>Attempt to reverse engineer or modify the app</li>
+                    <li>Use the app in any way that could damage or impair its functionality</li>
+                </ul>
+
+                <h3>Subscriptions</h3>
+                <p>Some features require a paid subscription. Subscriptions are billed through Apple's App Store and are subject to Apple's terms. You can manage or cancel your subscription at any time through your App Store account settings.</p>
+
+                <h3>Accuracy Disclaimer</h3>
+                <p>While we strive for accuracy, GPS-based location tracking has inherent limitations. The app should not be used as the sole record for legal, employment, or contractual obligations. We recommend maintaining independent records for critical compliance needs.</p>
+
+                <h3>Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising from your use of the app.</p>
+
+                <h3>Modifications</h3>
+                <p>We reserve the right to modify these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.</p>
+
+                <h3>Governing Law</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law principles.</p>
+
+                <h3>Contact</h3>
+                <p>For questions about these Terms, contact us at <a href="mailto:legal@daysinoffice.app">legal@daysinoffice.app</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+                            <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z" fill="white"/>
+                            <circle cx="50" cy="40" r="22" fill="#1a365d"/>
+                            <path d="M50 24v18l12 7" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Days in Office
+                    </a>
+                    <p>Effortless attendance tracking for the modern workplace. Know your office days without the hassle.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#business">Business</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#support">Help Center</a>
+                    <a href="mailto:support@daysinoffice.app">Contact Us</a>
+                    <a href="#faq">FAQs</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Days in Office. All rights reserved.</p>
+                <p>Made with care for hybrid workers everywhere.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
