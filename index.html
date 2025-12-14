@@ -69,7 +69,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: white;
+            color: var(--text);
             font-weight: 700;
             font-size: 1.25rem;
         }
@@ -108,6 +108,47 @@
         .mobile-menu svg {
             width: 24px;
             height: 24px;
+            color: var(--primary);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .mobile-nav li {
+            margin: 0;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--bg-alt);
             color: var(--primary);
         }
 
@@ -491,6 +532,15 @@
             background: var(--bg-alt);
         }
 
+        .business .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
         /* Support Section */
         .support {
             padding: 100px 0;
@@ -587,6 +637,13 @@
             margin-bottom: 12px;
         }
 
+        .legal h4 {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin-top: 24px;
+            margin-bottom: 8px;
+        }
+
         .legal p {
             margin-bottom: 16px;
             color: var(--text);
@@ -601,11 +658,27 @@
             margin-bottom: 8px;
         }
 
+        .legal .notice-box {
+            background: var(--bg-alt);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 8px;
+        }
+
+        .legal .notice-box strong {
+            color: var(--primary);
+        }
+
         /* Footer */
         footer {
             background: var(--primary-dark);
             color: white;
             padding: 60px 0 30px;
+        }
+
+        footer .logo {
+            color: white;
         }
 
         .footer-grid {
@@ -753,13 +826,24 @@
                 <li><a href="#support">Support</a></li>
                 <li><a href="#privacy">Privacy</a></li>
             </ul>
-            <button class="mobile-menu" aria-label="Menu">
+            <button class="mobile-menu" aria-label="Menu" id="mobile-menu-btn">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
+            <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
+            <li><a href="#business" onclick="closeMobileMenu()">Business</a></li>
+            <li><a href="#support" onclick="closeMobileMenu()">Support</a></li>
+            <li><a href="#privacy" onclick="closeMobileMenu()">Privacy</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -913,7 +997,7 @@
                     <div class="price">$0</div>
                     <p class="price-note">Forever free</p>
                     <ul>
-                        <li>1 active locations</li>
+                        <li>1 active location</li>
                         <li>Automatic tracking</li>
                         <li>Monthly summaries</li>
                         <li>Configurable day threshold</li>
@@ -960,8 +1044,11 @@
                     <li>Integration with HR systems</li>
                     <li>Custom deployment options</li>
                 </ul>
+                <div class="disclaimer">
+                    <strong>Important for Employers:</strong> If you plan to use this app to monitor employee attendance, you must obtain written consent from employees and comply with all applicable employment, privacy, and surveillance laws in your jurisdiction. The app is designed for individual self-tracking by default.
+                </div>
                 <p>Interested in bringing Days in Office to your organization?</p>
-                <a href="mailto:daysattheoffice@gmail.com" class="btn btn-primary">Contact Us for Early Access</a>
+                <a href="mailto:bestdaylabs@gmail.com" class="btn btn-primary">Contact Us for Early Access</a>
             </div>
             <div class="business-visual">
                 <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1014,79 +1101,366 @@
         <div class="container">
             <div class="legal-content">
                 <h2>Privacy Policy</h2>
-                <p class="last-updated">Last updated: November 2025</p>
+                <p class="last-updated">Last updated: December 14, 2024</p>
 
-                <p>Days in Office ("we," "our," or "the app") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+                <p>Best Day Labs LLC ("we," "our," or "the app") operates the Days in Office mobile application. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
 
-                <h3>Information We Collect</h3>
-                <p><strong>Location Data:</strong> The app uses your device's GPS to detect when you enter and exit designated office locations. This location data is processed entirely on your device and is never transmitted to our servers.</p>
-                <p><strong>Usage Data:</strong> We may collect anonymous, aggregated usage statistics to improve app performance. This data cannot be used to identify individual users.</p>
+                <div class="notice-box">
+                    <strong>Our Privacy Commitment:</strong> Your location data is processed entirely on your device and is never transmitted to our servers. We are committed to protecting your privacy and comply with applicable data protection laws.
+                </div>
 
-                <h3>How We Use Your Information</h3>
-                <p>Your location data is used solely to determine your presence at configured office locations and calculate your attendance. We do not:</p>
+                <h3>1. Information We Collect</h3>
+                
+                <h4>Location Data (Processed Locally Only)</h4>
+                <p>The app uses your device's GPS to detect when you enter and exit designated office locations you configure. This location data is:</p>
                 <ul>
-                    <li>Upload your location data to any server</li>
+                    <li>Processed entirely on your device using iOS geofencing capabilities</li>
+                    <li>Never transmitted to our servers</li>
+                    <li>Stored only in the app's local database on your device</li>
+                    <li>Used solely to calculate your office attendance</li>
+                    <li>Permanently deleted when you uninstall the app</li>
+                </ul>
+
+                <h4>Usage Data (Anonymous and Aggregated)</h4>
+                <p>We may collect anonymous, aggregated usage statistics through Apple's App Analytics to improve app performance and user experience. This data:</p>
+                <ul>
+                    <li>Cannot be used to identify individual users</li>
+                    <li>Includes information such as app crashes, feature usage, and device types</li>
+                    <li>Is collected only if you have enabled "Share Analytics" in your iOS settings</li>
+                    <li>Does not include any location information</li>
+                </ul>
+
+                <h4>Account and Subscription Data</h4>
+                <p>If you purchase a subscription, Apple processes all payment information. We receive only:</p>
+                <ul>
+                    <li>Subscription status (active/expired)</li>
+                    <li>Subscription tier (monthly/annual)</li>
+                    <li>Anonymous transaction identifiers for verification</li>
+                </ul>
+                <p>We do not receive or store your payment card information, billing address, or full name from Apple.</p>
+
+                <h3>2. Legal Basis for Processing (GDPR)</h3>
+                <p>For users in the European Economic Area (EEA), United Kingdom, or Switzerland, we process your data based on:</p>
+                <ul>
+                    <li><strong>Consent:</strong> You provide explicit consent when granting location permissions and agreeing to these terms</li>
+                    <li><strong>Contract Performance:</strong> Processing is necessary to provide the attendance tracking service you requested</li>
+                    <li><strong>Legitimate Interests:</strong> Anonymous analytics help us improve app stability and features while not overriding your privacy rights</li>
+                </ul>
+
+                <h3>3. How We Use Your Information</h3>
+                <p>Your locally-stored location data is used solely to:</p>
+                <ul>
+                    <li>Detect your presence at configured office locations</li>
+                    <li>Calculate your attendance hours and qualified days</li>
+                    <li>Generate attendance reports and analytics within the app</li>
+                    <li>Export attendance data at your request</li>
+                </ul>
+
+                <p><strong>We explicitly do NOT:</strong></p>
+                <ul>
+                    <li>Upload your location data to any server or cloud service</li>
                     <li>Share your location data with third parties</li>
                     <li>Track your location outside of configured office geofences</li>
-                    <li>Sell or monetize your personal data in any way</li>
+                    <li>Sell, rent, or monetize your personal data in any way</li>
+                    <li>Use your data for advertising or marketing purposes</li>
+                    <li>Monitor your location when the app is uninstalled or location permissions are revoked</li>
                 </ul>
 
-                <h3>Data Storage</h3>
-                <p>All attendance records and location data are stored locally on your device. If you delete the app, all associated data is permanently removed. We do not maintain backups of your personal data.</p>
-
-                <h3>Third-Party Services</h3>
-                <p>The app uses Apple's StoreKit for subscription management. Payment processing is handled entirely by Apple, and we do not have access to your payment information.</p>
-
-                <h3>Your Rights</h3>
-                <p>You have full control over your data. You can:</p>
+                <h3>4. Data Storage and Retention</h3>
+                <p>All attendance records and location data are stored locally on your device in an encrypted SQLite database. Data is retained:</p>
                 <ul>
-                    <li>Revoke location permissions at any time in your device settings</li>
-                    <li>Delete all app data by uninstalling the app</li>
-                    <li>Export your attendance data from within the app</li>
+                    <li>Until you manually delete it within the app</li>
+                    <li>Until you uninstall the app (all data is permanently removed)</li>
+                    <li>As long as you keep the app installed and wish to maintain your records</li>
+                </ul>
+                <p>We do not maintain server-side backups of your personal data.</p>
+
+                <h3>5. Data Sharing and Third-Party Services</h3>
+                <p>The app uses the following third-party services:</p>
+                <ul>
+                    <li><strong>Apple StoreKit:</strong> For subscription management and in-app purchases. Subject to <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a></li>
+                    <li><strong>iOS Location Services:</strong> For geofencing. Subject to <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a></li>
+                </ul>
+                <p>We do not integrate analytics services, advertising networks, or other third-party trackers beyond Apple's native services.</p>
+
+                <h3>6. Your Privacy Rights</h3>
+                <p>You have the following rights regarding your data:</p>
+
+                <h4>For All Users:</h4>
+                <ul>
+                    <li><strong>Access:</strong> View all your attendance data within the app at any time</li>
+                    <li><strong>Export:</strong> Export your attendance data in CSV format</li>
+                    <li><strong>Delete:</strong> Delete specific attendance records or all data within the app</li>
+                    <li><strong>Revoke Permissions:</strong> Disable location tracking at any time in iOS Settings > Days in Office > Location</li>
+                    <li><strong>Complete Removal:</strong> Uninstall the app to permanently delete all associated data</li>
                 </ul>
 
-                <h3>Children's Privacy</h3>
-                <p>Days in Office is not intended for use by children under 13. We do not knowingly collect personal information from children.</p>
+                <h4>For EEA/UK/Swiss Users (GDPR Rights):</h4>
+                <p>In addition to the above, you have the right to:</p>
+                <ul>
+                    <li><strong>Rectification:</strong> Correct inaccurate data (you can edit records in the app)</li>
+                    <li><strong>Restriction:</strong> Limit how we process your data</li>
+                    <li><strong>Data Portability:</strong> Receive your data in a machine-readable format (CSV export)</li>
+                    <li><strong>Withdraw Consent:</strong> Revoke consent for data processing at any time</li>
+                    <li><strong>Lodge a Complaint:</strong> File a complaint with your local data protection authority</li>
+                </ul>
 
-                <h3>Changes to This Policy</h3>
-                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                <h4>For California Users (CCPA Rights):</h4>
+                <p>California residents have the right to:</p>
+                <ul>
+                    <li><strong>Know:</strong> Request disclosure of what personal information we collect, use, and share</li>
+                    <li><strong>Delete:</strong> Request deletion of your personal information</li>
+                    <li><strong>Opt-Out:</strong> We do not sell personal information, so opt-out is not applicable</li>
+                    <li><strong>Non-Discrimination:</strong> Exercise your privacy rights without discriminatory treatment</li>
+                </ul>
 
-                <h3>Contact Us</h3>
-                <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:privacy@daysinoffice.app">privacy@daysinoffice.app</a>.</p>
+                <p>To exercise any of these rights, contact us at <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a>. We will respond within 30 days (45 days for CCPA requests).</p>
+
+                <h3>7. Children's Privacy (COPPA Compliance)</h3>
+                <p>Days in Office is not intended for use by children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a>, and we will assist in deleting such information.</p>
+
+                <h3>8. International Data Transfers</h3>
+                <p>Since all location data is stored locally on your device and never transmitted to our servers, there are no international data transfers of your location information. Anonymous analytics data may be transmitted to Apple servers located in the United States and other countries where Apple operates, subject to Apple's Privacy Policy and data protection commitments.</p>
+
+                <h3>9. Data Security</h3>
+                <p>We implement appropriate technical and organizational measures to protect your data:</p>
+                <ul>
+                    <li>Local data storage is protected by iOS's encryption and security features</li>
+                    <li>The app does not transmit location data over networks, eliminating interception risks</li>
+                    <li>Access to locally stored data requires device authentication (Face ID, Touch ID, or passcode)</li>
+                </ul>
+
+                <h3>10. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or app features. We will notify you of any material changes by:</p>
+                <ul>
+                    <li>Posting the new Privacy Policy on this page</li>
+                    <li>Updating the "Last updated" date</li>
+                    <li>Displaying an in-app notification for significant changes</li>
+                </ul>
+                <p>Your continued use of the app after changes become effective constitutes acceptance of the revised Privacy Policy.</p>
+
+                <h3>11. Contact Us</h3>
+                <p><strong>Data Controller:</strong> Best Day Labs LLC</p>
+                <p><strong>Privacy Inquiries:</strong> <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a></p>
+                <p><strong>EEA Representative:</strong> For GDPR inquiries from the EEA, please contact us at the email above.</p>
+                <p><strong>Response Time:</strong> We aim to respond to all privacy inquiries within 30 days.</p>
 
                 <h2 id="terms">Terms of Service</h2>
-                <p class="last-updated">Last updated: November 2025</p>
+                <p class="last-updated">Last updated: December 14, 2024</p>
 
-                <p>By downloading, installing, or using Days in Office, you agree to be bound by these Terms of Service.</p>
+                <p>These Terms of Service ("Terms") govern your use of the Days in Office mobile application ("App") operated by Best Day Labs LLC ("we," "our," or "us"). By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
-                <h3>License</h3>
-                <p>We grant you a limited, non-exclusive, non-transferable license to use the app for personal or professional attendance tracking purposes.</p>
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing or using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you must not use the App.</p>
 
-                <h3>Acceptable Use</h3>
-                <p>You agree to use the app only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+                <h3>2. License Grant</h3>
+                <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal or professional attendance tracking purposes, subject to these Terms. This license does not include the right to:</p>
                 <ul>
-                    <li>Use the app to track anyone other than yourself without their consent</li>
-                    <li>Attempt to reverse engineer or modify the app</li>
-                    <li>Use the app in any way that could damage or impair its functionality</li>
+                    <li>Modify, copy, distribute, or create derivative works of the App</li>
+                    <li>Reverse engineer, decompile, or disassemble the App</li>
+                    <li>Use the App for any commercial purpose beyond individual attendance tracking</li>
+                    <li>Rent, lease, loan, or sublicense access to the App</li>
                 </ul>
 
-                <h3>Subscriptions</h3>
-                <p>Some features require a paid subscription. Subscriptions are billed through Apple's App Store and are subject to Apple's terms. You can manage or cancel your subscription at any time through your App Store account settings.</p>
+                <h3>3. Acceptable Use</h3>
+                <p>You agree to use the App only for lawful purposes and in accordance with these Terms. You agree NOT to:</p>
+                <ul>
+                    <li>Use the App to track anyone other than yourself without their explicit written consent</li>
+                    <li>Attempt to reverse engineer, modify, hack, or tamper with the App's functionality</li>
+                    <li>Use the App in any way that could damage, disable, overburden, or impair its functionality</li>
+                    <li>Violate any applicable local, state, national, or international laws or regulations</li>
+                    <li>Use the App to violate the privacy rights of any third party</li>
+                    <li>Circumvent any access restrictions or usage limitations</li>
+                </ul>
 
-                <h3>Accuracy Disclaimer</h3>
-                <p>While we strive for accuracy, GPS-based location tracking has inherent limitations. The app should not be used as the sole record for legal, employment, or contractual obligations. We recommend maintaining independent records for critical compliance needs.</p>
+                <h3>4. Employer Use and Employee Consent</h3>
+                <div class="notice-box">
+                    <strong>Important Notice for Employers:</strong> The App is designed primarily for individual self-tracking. If you are an employer intending to use this App to monitor employee attendance or location:
+                </div>
+                <ul>
+                    <li>You MUST obtain explicit, informed, written consent from each employee before requiring or requesting they use the App</li>
+                    <li>You MUST comply with all applicable employment laws, labor regulations, privacy laws, and surveillance statutes in your jurisdiction</li>
+                    <li>You MUST clearly disclose to employees: (a) that location tracking will occur, (b) the purpose of tracking, (c) how data will be used, and (d) their right to decline</li>
+                    <li>You MUST NOT use the App in states or jurisdictions where employee location tracking without consent is prohibited</li>
+                    <li>You are solely responsible for ensuring compliance with applicable laws, including but not limited to California AB 1651, Connecticut Gen. Stat. § 31-48d, and similar statutes</li>
+                    <li>You must consult with legal counsel to ensure your use complies with all applicable employment and privacy laws</li>
+                </ul>
+                <p>We expressly disclaim any liability for employers' failure to obtain proper consent or comply with applicable laws.</p>
 
-                <h3>Limitation of Liability</h3>
-                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising from your use of the app.</p>
+                <h3>5. Subscriptions and Payments</h3>
+                
+                <h4>Subscription Plans</h4>
+                <p>The App offers a free tier and paid subscription options (monthly and annual). Subscriptions provide access to premium features including support for multiple locations and advanced analytics.</p>
 
-                <h3>Modifications</h3>
-                <p>We reserve the right to modify these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.</p>
+                <h4>Billing and Renewals</h4>
+                <ul>
+                    <li>All subscriptions are billed through Apple's App Store and are subject to Apple's terms and conditions</li>
+                    <li>Subscriptions automatically renew at the end of each billing period unless canceled at least 24 hours before the renewal date</li>
+                    <li>Your Apple account will be charged for renewal within 24 hours prior to the end of the current period</li>
+                    <li>You can manage or cancel your subscription at any time through your App Store account settings: Settings > [Your Name] > Subscriptions</li>
+                </ul>
 
-                <h3>Governing Law</h3>
-                <p>These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law principles.</p>
+                <h4>Refund Policy</h4>
+                <p>All payments are processed by Apple. Refund requests are subject to Apple's refund policy. To request a refund:</p>
+                <ul>
+                    <li>Visit <a href="https://reportaproblem.apple.com/" target="_blank">reportaproblem.apple.com</a></li>
+                    <li>Sign in with your Apple ID</li>
+                    <li>Select "Request a refund" for the Days in Office subscription</li>
+                </ul>
+                <p>We cannot process refunds directly. All refund decisions are made by Apple in accordance with their policies. Refund requests made within 14 days of purchase are typically approved, but this is at Apple's discretion.</p>
 
-                <h3>Contact</h3>
-                <p>For questions about these Terms, contact us at <a href="mailto:daysattheoffice@gmail.com">legal@daysinoffice.app</a>.</p>
+                <h4>Pricing Changes</h4>
+                <p>We reserve the right to modify subscription prices. Price changes will apply to new subscriptions and renewals after 30 days' notice. Existing subscribers will be notified via the App and email (if provided) before any price change takes effect.</p>
+
+                <h4>Free Trial</h4>
+                <p>We may offer free trial periods for premium features. Free trials automatically convert to paid subscriptions unless canceled before the trial period ends. You can cancel at any time during the trial without charge.</p>
+
+                <h3>6. Accuracy Disclaimer and Limitation of Use</h3>
+                <div class="notice-box">
+                    <strong>Critical Disclaimer:</strong> GPS-based location tracking has inherent limitations and may not always be 100% accurate. Factors affecting accuracy include: device GPS capability, signal interference, indoor locations, tall buildings, weather conditions, and iOS background processing limitations.
+                </div>
+
+                <p><strong>The App should NOT be used as:</strong></p>
+                <ul>
+                    <li>The sole official record for legal compliance, employment verification, or contractual obligations</li>
+                    <li>A replacement for your employer's official timekeeping or attendance system</li>
+                    <li>A legally binding record for billing, invoicing, or payment purposes without independent verification</li>
+                    <li>Evidence in legal proceedings without corroborating documentation</li>
+                </ul>
+
+                <p><strong>We strongly recommend:</strong></p>
+                <ul>
+                    <li>Maintaining independent records for critical compliance needs</li>
+                    <li>Using the App as a convenience tool and personal reference only</li>
+                    <li>Verifying attendance data with your employer's official systems</li>
+                    <li>Cross-checking attendance records periodically for accuracy</li>
+                </ul>
+
+                <h3>7. Intellectual Property Rights</h3>
+                <p>The App, including all content, features, functionality, design, software, text, graphics, logos, and trademarks, is owned by Best Day Labs LLC and is protected by United States and international copyright, trademark, and other intellectual property laws.</p>
+                <p>You are granted only the limited license described in Section 2. All other rights are expressly reserved by us.</p>
+
+                <h3>8. Disclaimers and Limitation of Liability</h3>
+
+                <h4>No Warranty</h4>
+                <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COURSE OF PERFORMANCE.</p>
+
+                <p>WE DO NOT WARRANT THAT:</p>
+                <ul>
+                    <li>The App will function without interruption or errors</li>
+                    <li>Defects will be corrected</li>
+                    <li>The App is free of viruses or harmful components</li>
+                    <li>Location tracking will be 100% accurate at all times</li>
+                    <li>The App will meet your specific requirements</li>
+                </ul>
+
+                <h4>Limitation of Liability</h4>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BEST DAY LABS LLC, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION:</p>
+                <ul>
+                    <li>Loss of profits, revenue, data, or goodwill</li>
+                    <li>Service interruption or data loss</li>
+                    <li>Reliance on inaccurate location data</li>
+                    <li>Employment consequences from attendance tracking errors</li>
+                    <li>Any other losses resulting from your use or inability to use the App</li>
+                </ul>
+
+                <p>WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY, OR ANY OTHER LEGAL THEORY, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+                <p>IN JURISDICTIONS THAT DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, OUR LIABILITY IS LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW. IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU FOR ALL DAMAGES EXCEED THE AMOUNT YOU PAID US IN THE PAST TWELVE (12) MONTHS, OR $100, WHICHEVER IS GREATER.</p>
+
+                <h3>9. Indemnification</h3>
+                <p>You agree to indemnify, defend, and hold harmless Best Day Labs LLC, its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising from:</p>
+                <ul>
+                    <li>Your use or misuse of the App</li>
+                    <li>Your violation of these Terms</li>
+                    <li>Your violation of any rights of third parties, including employees or contractors</li>
+                    <li>Your violation of applicable laws, including employment, privacy, or surveillance laws</li>
+                    <li>Employer use without proper employee consent</li>
+                </ul>
+
+                <h3>10. Modifications to the App and Terms</h3>
+                <p>We reserve the right to:</p>
+                <ul>
+                    <li>Modify, suspend, or discontinue the App (or any part thereof) at any time with or without notice</li>
+                    <li>Modify these Terms at any time by posting the updated Terms in the App and on our website</li>
+                </ul>
+                <p>Continued use of the App after changes to these Terms constitutes acceptance of the modified Terms. We will provide notice of material changes through the App or via email if you have provided one.</p>
+
+                <h3>11. Termination</h3>
+                <p>We may terminate or suspend your access to the App immediately, without prior notice or liability, for any reason, including but not limited to:</p>
+                <ul>
+                    <li>Breach of these Terms</li>
+                    <li>Violation of applicable laws</li>
+                    <li>Fraudulent or illegal use of the App</li>
+                    <li>Misuse that harms us or third parties</li>
+                </ul>
+                <p>Upon termination, your right to use the App will immediately cease. All provisions of these Terms that by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, indemnification, and limitations of liability.</p>
+
+                <h3>12. Dispute Resolution and Arbitration</h3>
+
+                <h4>Informal Resolution</h4>
+                <p>Before filing a claim, you agree to contact us at <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a> and attempt to resolve the dispute informally for at least 30 days.</p>
+
+                <h4>Binding Arbitration</h4>
+                <p>If informal resolution fails, you agree that any dispute, claim, or controversy arising out of or relating to these Terms or your use of the App shall be resolved by binding arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, rather than in court, except:</p>
+                <ul>
+                    <li>You may assert claims in small claims court if your claims qualify</li>
+                    <li>You or we may seek equitable relief in court for intellectual property infringement</li>
+                </ul>
+
+                <h4>Class Action Waiver</h4>
+                <p>YOU AND BEST DAY LABS LLC AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. Unless both you and we agree otherwise, the arbitrator may not consolidate more than one person's claims and may not preside over any form of representative or class proceeding.</p>
+
+                <h4>Arbitration Costs</h4>
+                <p>Payment of all filing, administration, and arbitrator fees will be governed by the AAA's Consumer Arbitration Rules. For claims under $10,000, we will reimburse your filing fees and pay AAA administrative and arbitrator fees.</p>
+
+                <h4>Opt-Out Right</h4>
+                <p>You may opt out of this arbitration agreement by sending written notice to <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a> within 30 days of first accepting these Terms. Your opt-out notice must include your name, address, and a clear statement that you wish to opt out of the arbitration agreement.</p>
+
+                <h3>13. Governing Law and Jurisdiction</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, United States, without regard to its conflict of law principles.</p>
+                <p>Any legal action or proceeding arising under these Terms (if not subject to arbitration) shall be brought exclusively in the federal or state courts located in Delaware, and you hereby consent to personal jurisdiction and venue in such courts.</p>
+
+                <h3>14. Severability</h3>
+                <p>If any provision of these Terms is held to be invalid, illegal, or unenforceable, the validity, legality, and enforceability of the remaining provisions shall not be affected or impaired in any way. The invalid provision shall be modified to the minimum extent necessary to make it valid and enforceable.</p>
+
+                <h3>15. Entire Agreement</h3>
+                <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Best Day Labs LLC regarding the App and supersede all prior or contemporaneous understandings and agreements, whether written or oral.</p>
+
+                <h3>16. Force Majeure</h3>
+                <p>We shall not be liable for any failure or delay in performance under these Terms due to causes beyond our reasonable control, including but not limited to acts of God, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, pandemics, strikes, or shortages of transportation, facilities, fuel, energy, labor, or materials.</p>
+
+                <h3>17. No Waiver</h3>
+                <p>Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision. Any waiver of any provision of these Terms will be effective only if in writing and signed by us.</p>
+
+                <h3>18. Assignment</h3>
+                <p>You may not assign or transfer these Terms or your rights under them without our prior written consent. We may assign these Terms without restriction. Any attempted transfer or assignment in violation of this section shall be void.</p>
+
+                <h3>19. Contact Information</h3>
+                <p><strong>Best Day Labs LLC</strong></p>
+                <p>For questions about these Terms of Service, please contact us at:</p>
+                <p>Email: <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a></p>
+                <p>We aim to respond to all inquiries within 5 business days.</p>
+
+                <h2 id="accessibility">Accessibility Statement</h2>
+                <p class="last-updated">Last updated: December 14, 2024</p>
+
+                <p>Best Day Labs LLC is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.</p>
+
+                <h3>Conformance Status</h3>
+                <p>The Days in Office app strives to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards and follows iOS accessibility best practices. We leverage iOS's native accessibility features including:</p>
+                <ul>
+                    <li>VoiceOver support for screen readers</li>
+                    <li>Dynamic Type for adjustable text sizes</li>
+                    <li>High contrast mode compatibility</li>
+                    <li>Voice Control support</li>
+                    <li>Keyboard navigation support</li>
+                </ul>
+
+                <h3>Feedback</h3>
+                <p>We welcome your feedback on the accessibility of Days in Office. Please contact us if you encounter accessibility barriers:</p>
+                <p>Email: <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a></p>
+                <p>We aim to respond to accessibility feedback within 5 business days.</p>
             </div>
         </div>
     </section>
@@ -1122,13 +1496,46 @@
                     <h4>Legal</h4>
                     <a href="#privacy">Privacy Policy</a>
                     <a href="#terms">Terms of Service</a>
+                    <a href="#accessibility">Accessibility</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Days in Office. All rights reserved.</p>
+                <p>&copy; 2024-2025 Days in Office. All rights reserved.</p>
                 <p>Made with care for hybrid workers everywhere.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu function
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = mobileNav.contains(event.target);
+            const isClickOnButton = mobileMenuBtn.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnButton && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu on window resize to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
