@@ -69,7 +69,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: var(--text);
+            color: white;
             font-weight: 700;
             font-size: 1.25rem;
         }
@@ -603,6 +603,81 @@
             text-decoration: underline;
         }
 
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-alt);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 24px;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 24px 24px 24px;
+        }
+
+        .faq-answer p {
+            color: var(--text);
+            line-height: 1.8;
+            margin: 0;
+        }
+
         /* Legal Sections */
         .legal {
             padding: 80px 0;
@@ -675,10 +750,6 @@
             background: var(--primary-dark);
             color: white;
             padding: 60px 0 30px;
-        }
-
-        footer .logo {
-            color: white;
         }
 
         .footer-grid {
@@ -1096,12 +1167,64 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about Days in Office.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is my location data private?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Days in Office is designed with privacy as a core principle. All your location data stays on your device and is never uploaded to our servers or shared with anyone. We don't have access to your location history, visit records, or any personal information. Your data is yours alone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Will this drain my battery?
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Days in Office uses iOS's built-in geofencing technology, which is extremely battery-efficient. The app only activates when you cross the boundary of a location you've set up—it doesn't constantly track your GPS position in the background. Most users report no noticeable impact on battery life.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does the app know when I'm at the office?
+                    </button>
+                    <div class="faq-answer">
+                        <p>When you add a location, you set a detection radius (the default is 100 meters). The app uses GPS geofencing to detect when you enter and exit that area. It then calculates how long you were there and determines whether it counts as a "day" based on your configured time threshold (for example, 2 hours minimum).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's the difference between Free and Pro?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Free users can track one location with full functionality. Pro unlocks up to 20 active locations—perfect for hybrid workers who split time between multiple offices, client sites, or co-working spaces. Pro also includes unlimited PDF and CSV exports for HR documentation or billing purposes. Pro is $39.99/year or $4.99/month.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What counts as a "qualified day"?
+                    </button>
+                    <div class="faq-answer">
+                        <p>A qualified day is any calendar day where your total time at a location meets or exceeds your configured threshold. The default is 2 hours, but you can adjust this in each location's settings. If you have multiple short visits on the same day, the app adds them together—so a morning meeting plus an afternoon session can still count as one qualified day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Legal Sections -->
     <section class="legal" id="privacy">
         <div class="container">
             <div class="legal-content">
                 <h2>Privacy Policy</h2>
-                <p class="last-updated">Last updated: December 14, 2025</p>
+                <p class="last-updated">Last updated: December 14, 2024</p>
 
                 <p>Best Day Labs LLC ("we," "our," or "the app") operates the Days in Office mobile application. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
 
@@ -1246,7 +1369,7 @@
                 <p><strong>Response Time:</strong> We aim to respond to all privacy inquiries within 30 days.</p>
 
                 <h2 id="terms">Terms of Service</h2>
-                <p class="last-updated">Last updated: December 14, 2025</p>
+                <p class="last-updated">Last updated: December 14, 2024</p>
 
                 <p>These Terms of Service ("Terms") govern your use of the Days in Office mobile application ("App") operated by Best Day Labs LLC ("we," "our," or "us"). By downloading, installing, or using the App, you agree to be bound by these Terms.</p>
 
@@ -1443,7 +1566,7 @@
                 <p>We aim to respond to all inquiries within 5 business days.</p>
 
                 <h2 id="accessibility">Accessibility Statement</h2>
-                <p class="last-updated">Last updated: December 14, 2025</p>
+                <p class="last-updated">Last updated: December 14, 2024</p>
 
                 <p>Best Day Labs LLC is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.</p>
 
@@ -1500,8 +1623,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025-202 Days in Office. All rights reserved.</p>
-                <p>Made with care for workers everywhere.</p>
+                <p>&copy; 2024-2025 Days in Office. All rights reserved.</p>
+                <p>Made with care for hybrid workers everywhere.</p>
             </div>
         </div>
     </footer>
@@ -1535,6 +1658,28 @@
             if (window.innerWidth > 768) {
                 mobileNav.classList.remove('active');
             }
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isActive = this.classList.contains('active');
+                
+                // Close all FAQs
+                faqQuestions.forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it wasn't already active
+                if (!isActive) {
+                    this.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
