@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Attendance Percentage Calculator</title>
+    <meta name="description"
+        content="Calculate your office attendance percentage for hybrid work compliance. Quickly check if you're meeting your company's required in-office days.">
+    <meta name="keywords" content="attendance percentage calculator, office attendance, hybrid work compliance, RTO compliance">
+    <link rel="canonical" href="https://daysattheoffice.app/tools/office-attendance-percentage-calculator">
+    <link rel="icon" type="image/x-icon" href="../../favicon.png">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A365D;
+            --primary-dark: #102543;
+            --text: #1A365D;
+            --text-secondary: #86868b;
+            --background: #ffffff;
+            --background-secondary: #f5f5f7;
+            --border: #d2d2d7;
+            --success: #34C759;
+            --warning: #FF9500;
+            --danger: #FF3B30;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 100px 0 60px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .tool-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Calculator Card */
+        .calculator-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        label .optional {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--background);
+            text-align: center;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .percentage-display {
+            margin-bottom: 20px;
+        }
+
+        .percentage-value {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .percentage-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .status-badge.meets {
+            background: rgba(52, 199, 89, 0.15);
+            color: #248a3d;
+        }
+
+        .status-badge.below {
+            background: rgba(255, 59, 48, 0.15);
+            color: #d70015;
+        }
+
+        .status-badge.no-requirement {
+            background: var(--background-secondary);
+            color: var(--text-secondary);
+        }
+
+        .status-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .result-explanation {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--background-secondary);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .cta-section h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .cta-section .btn {
+            width: auto;
+            display: inline-flex;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .calculator-card {
+                padding: 24px;
+            }
+
+            .percentage-value {
+                font-size: 3rem;
+            }
+
+            .quick-stats {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../../" class="logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z"
+                        fill="#1a365d"></path>
+                    <circle cx="50" cy="40" r="22" fill="white"></circle>
+                    <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <span>Days at the Office</span>
+            </a>
+            <a href="../../" class="nav-link">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <header class="tool-header">
+                <h1>Office Attendance Percentage Calculator</h1>
+                <p>Quickly calculate your office attendance percentage to check compliance with your company's hybrid work policy.</p>
+            </header>
+
+            <div class="calculator-card">
+                <form id="attendanceForm">
+                    <div class="form-group">
+                        <label for="totalDays">Total workdays this month</label>
+                        <input type="number" id="totalDays" min="1" max="31" placeholder="e.g., 22" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="officeDays">Days in office this month</label>
+                        <input type="number" id="officeDays" min="0" max="31" placeholder="e.g., 12" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requiredPercentage">Required attendance percentage <span class="optional">- optional</span></label>
+                        <input type="number" id="requiredPercentage" min="0" max="100" placeholder="e.g., 60">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Calculate Attendance</button>
+                </form>
+
+                <!-- Results -->
+                <div id="results" class="results-section">
+                    <div class="percentage-display">
+                        <div class="percentage-value" id="percentageValue">0%</div>
+                        <div class="percentage-label">Office Attendance</div>
+                    </div>
+
+                    <div id="statusBadge" class="status-badge no-requirement">
+                        <span id="statusText">No requirement set</span>
+                    </div>
+
+                    <p class="result-explanation" id="explanation">
+                        You attended the office 0 out of 0 workdays this month.
+                    </p>
+
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="daysInOffice">0</div>
+                            <div class="stat-label">Days In Office</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="daysRemote">0</div>
+                            <div class="stat-label">Days Remote</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3>Want this tracked automatically?</h3>
+                <p>Days at the Office uses GPS to automatically track your office attendance. No manual counting required.</p>
+                <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+                    </svg>
+                    Download on App Store
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p><a href="../../">Days at the Office</a> - Track your office days effortlessly</p>
+                <p style="margin-top: 8px;">&copy; 2025-2026 Best Day Labs LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Office Attendance Percentage Calculator
+         * Simple tool to calculate attendance percentage and check compliance
+         *
+         * Formula: (Days in office / Total workdays) * 100
+         */
+
+        document.getElementById('attendanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const totalDays = parseInt(document.getElementById('totalDays').value);
+            const officeDays = parseInt(document.getElementById('officeDays').value);
+            const requiredPercentage = parseFloat(document.getElementById('requiredPercentage').value) || null;
+
+            // Validate inputs
+            if (officeDays > totalDays) {
+                alert('Days in office cannot exceed total workdays.');
+                return;
+            }
+
+            // Calculate percentage
+            const percentage = (officeDays / totalDays) * 100;
+            const remoteDays = totalDays - officeDays;
+
+            // Update percentage display
+            document.getElementById('percentageValue').textContent = percentage.toFixed(1) + '%';
+
+            // Update status badge
+            const statusBadge = document.getElementById('statusBadge');
+            const statusText = document.getElementById('statusText');
+
+            statusBadge.className = 'status-badge';
+
+            if (requiredPercentage !== null) {
+                if (percentage >= requiredPercentage) {
+                    statusBadge.classList.add('meets');
+                    statusBadge.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Meets Requirement</span>
+                    `;
+                } else {
+                    statusBadge.classList.add('below');
+                    const shortfall = requiredPercentage - percentage;
+                    statusBadge.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>Below Requirement (${shortfall.toFixed(1)}% short)</span>
+                    `;
+                }
+            } else {
+                statusBadge.classList.add('no-requirement');
+                statusBadge.innerHTML = '<span>No requirement set</span>';
+            }
+
+            // Update explanation
+            const explanation = document.getElementById('explanation');
+            let explanationText = `You attended the office ${officeDays} out of ${totalDays} workdays this month.`;
+
+            if (requiredPercentage !== null) {
+                const requiredDays = Math.ceil((requiredPercentage / 100) * totalDays);
+                if (percentage >= requiredPercentage) {
+                    explanationText += ` You've met your ${requiredPercentage}% requirement (${requiredDays} days needed).`;
+                } else {
+                    const daysNeeded = requiredDays - officeDays;
+                    explanationText += ` To meet ${requiredPercentage}%, you need ${daysNeeded} more office day${daysNeeded > 1 ? 's' : ''}.`;
+                }
+            }
+
+            explanation.textContent = explanationText;
+
+            // Update quick stats
+            document.getElementById('daysInOffice').textContent = officeDays;
+            document.getElementById('daysRemote').textContent = remoteDays;
+
+            // Show results section
+            document.getElementById('results').classList.add('visible');
+        });
+
+        // Auto-calculate on input change for better UX
+        const inputs = document.querySelectorAll('#attendanceForm input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const totalDays = document.getElementById('totalDays').value;
+                const officeDays = document.getElementById('officeDays').value;
+
+                // Only auto-calculate if both required fields have values
+                if (totalDays && officeDays) {
+                    // Trigger form submission for calculation
+                    // But don't actually submit - just calculate
+                    const total = parseInt(totalDays);
+                    const office = parseInt(officeDays);
+
+                    if (office <= total && total > 0) {
+                        document.getElementById('attendanceForm').dispatchEvent(new Event('submit'));
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

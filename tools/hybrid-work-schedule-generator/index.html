@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Work Schedule Generator</title>
+    <meta name="description"
+        content="Generate an optimal hybrid work schedule based on your required office days, preferences, and commute. Get personalized recommendations for your in-office days.">
+    <meta name="keywords" content="hybrid schedule generator, work schedule planner, hybrid work calendar, office day planner">
+    <link rel="canonical" href="https://daysattheoffice.app/tools/hybrid-work-schedule-generator">
+    <link rel="icon" type="image/x-icon" href="../../favicon.png">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A365D;
+            --primary-dark: #102543;
+            --primary-light: rgba(26, 54, 93, 0.1);
+            --text: #1A365D;
+            --text-secondary: #86868b;
+            --background: #ffffff;
+            --background-secondary: #f5f5f7;
+            --border: #d2d2d7;
+            --success: #34C759;
+            --warning: #FF9500;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 100px 0 60px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .tool-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Calculator Card */
+        .calculator-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        label .hint {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 2px;
+        }
+
+        label .optional {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--background);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+
+        /* Day Selector */
+        .day-selector {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .day-checkbox {
+            display: none;
+        }
+
+        .day-label {
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .day-label:hover {
+            border-color: var(--primary);
+        }
+
+        .day-checkbox:checked + .day-label {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .results-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        /* Schedule Display */
+        .schedule-card {
+            background: var(--background-secondary);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-card.recommended {
+            border: 2px solid var(--primary);
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.05) 0%, rgba(26, 54, 93, 0.02) 100%);
+        }
+
+        .schedule-label {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .schedule-label.alt {
+            background: var(--text-secondary);
+        }
+
+        .week-display {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .day-block {
+            padding: 16px 8px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .day-block.office {
+            background: var(--primary);
+            color: white;
+        }
+
+        .day-block.remote {
+            background: var(--background);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .day-block .day-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .day-block .day-type {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .schedule-explanation {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--background-secondary);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .cta-section .btn {
+            width: auto;
+            display: inline-flex;
+        }
+
+        /* Example Schedules */
+        .examples-section {
+            margin-top: 60px;
+        }
+
+        .examples-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .example-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .example-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .example-card .mini-week {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .example-card .mini-day {
+            flex: 1;
+            padding: 8px 4px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .example-card .mini-day.office {
+            background: var(--primary);
+            color: white;
+        }
+
+        .example-card .mini-day.remote {
+            background: var(--background-secondary);
+            color: var(--text-secondary);
+        }
+
+        .example-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+
+            .calculator-card {
+                padding: 24px;
+            }
+
+            .week-display {
+                gap: 4px;
+            }
+
+            .day-block {
+                padding: 12px 4px;
+            }
+
+            .day-block .day-name {
+                font-size: 0.8rem;
+            }
+
+            .day-block .day-type {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo span {
+                display: none;
+            }
+
+            .day-label {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../../" class="logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z"
+                        fill="#1a365d"></path>
+                    <circle cx="50" cy="40" r="22" fill="white"></circle>
+                    <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <span>Days at the Office</span>
+            </a>
+            <a href="../../" class="nav-link">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <header class="tool-header">
+                <h1>Hybrid Work Schedule Generator</h1>
+                <p>Generate an optimal weekly schedule for your hybrid work arrangement. Based on your requirements and preferences, we'll suggest the best days to be in the office.</p>
+            </header>
+
+            <div class="calculator-card">
+                <form id="scheduleForm">
+                    <div class="form-group">
+                        <label for="requiredDays">Required office days per week</label>
+                        <select id="requiredDays" required>
+                            <option value="1">1 day</option>
+                            <option value="2">2 days</option>
+                            <option value="3" selected>3 days</option>
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Preferred in-office days
+                            <span class="hint">Select the days you'd prefer to be in the office</span>
+                        </label>
+                        <div class="day-selector">
+                            <input type="checkbox" id="mon" class="day-checkbox" value="mon">
+                            <label for="mon" class="day-label">Monday</label>
+
+                            <input type="checkbox" id="tue" class="day-checkbox" value="tue" checked>
+                            <label for="tue" class="day-label">Tuesday</label>
+
+                            <input type="checkbox" id="wed" class="day-checkbox" value="wed" checked>
+                            <label for="wed" class="day-label">Wednesday</label>
+
+                            <input type="checkbox" id="thu" class="day-checkbox" value="thu" checked>
+                            <label for="thu" class="day-label">Thursday</label>
+
+                            <input type="checkbox" id="fri" class="day-checkbox" value="fri">
+                            <label for="fri" class="day-label">Friday</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commuteLength">Commute difficulty</label>
+                        <select id="commuteLength" required>
+                            <option value="short">Short (under 20 min)</option>
+                            <option value="medium" selected>Medium (20-45 min)</option>
+                            <option value="long">Long (over 45 min)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Team overlap days <span class="optional">- optional</span>
+                            <span class="hint">Days when your team typically meets in person</span>
+                        </label>
+                        <div class="day-selector">
+                            <input type="checkbox" id="team-mon" class="day-checkbox" value="mon">
+                            <label for="team-mon" class="day-label">Mon</label>
+
+                            <input type="checkbox" id="team-tue" class="day-checkbox" value="tue" checked>
+                            <label for="team-tue" class="day-label">Tue</label>
+
+                            <input type="checkbox" id="team-wed" class="day-checkbox" value="wed">
+                            <label for="team-wed" class="day-label">Wed</label>
+
+                            <input type="checkbox" id="team-thu" class="day-checkbox" value="thu" checked>
+                            <label for="team-thu" class="day-label">Thu</label>
+
+                            <input type="checkbox" id="team-fri" class="day-checkbox" value="fri">
+                            <label for="team-fri" class="day-label">Fri</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Generate Schedule</button>
+                </form>
+
+                <!-- Results -->
+                <div id="results" class="results-section">
+                    <h2 class="results-header">Your Recommended Schedule</h2>
+
+                    <div id="recommendedSchedule" class="schedule-card recommended">
+                        <span class="schedule-label">Recommended</span>
+                        <div class="week-display" id="recommendedWeek">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <p class="schedule-explanation" id="recommendedExplanation"></p>
+                    </div>
+
+                    <div id="alternativeSchedule" class="schedule-card">
+                        <span class="schedule-label alt">Alternative</span>
+                        <div class="week-display" id="alternativeWeek">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        <p class="schedule-explanation" id="alternativeExplanation"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3>Want this tracked automatically?</h3>
+                <p>Days at the Office automatically tracks which days you're in the office, so you always know if you're hitting your target.</p>
+                <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+                    </svg>
+                    Download on App Store
+                </a>
+            </div>
+
+            <!-- Example Schedules -->
+            <section class="examples-section">
+                <h2>Example Hybrid Schedules</h2>
+                <div class="example-grid">
+                    <article class="example-card">
+                        <h3>The Classic 3-2</h3>
+                        <div class="mini-week">
+                            <div class="mini-day remote">M</div>
+                            <div class="mini-day office">T</div>
+                            <div class="mini-day office">W</div>
+                            <div class="mini-day office">T</div>
+                            <div class="mini-day remote">F</div>
+                        </div>
+                        <p>Tuesday through Thursday in office. Popular for team collaboration mid-week while keeping Monday and Friday flexible for deep work or personal appointments.</p>
+                    </article>
+
+                    <article class="example-card">
+                        <h3>The Bookends</h3>
+                        <div class="mini-week">
+                            <div class="mini-day office">M</div>
+                            <div class="mini-day remote">T</div>
+                            <div class="mini-day office">W</div>
+                            <div class="mini-day remote">T</div>
+                            <div class="mini-day office">F</div>
+                        </div>
+                        <p>Alternating days create natural breaks between office and remote work. Good for those who like variety and don't mind Mondays in office.</p>
+                    </article>
+
+                    <article class="example-card">
+                        <h3>The Early Week</h3>
+                        <div class="mini-week">
+                            <div class="mini-day office">M</div>
+                            <div class="mini-day office">T</div>
+                            <div class="mini-day remote">W</div>
+                            <div class="mini-day remote">T</div>
+                            <div class="mini-day remote">F</div>
+                        </div>
+                        <p>Front-load office days early in the week. Perfect for those who prefer winding down the week from home with fewer interruptions.</p>
+                    </article>
+
+                    <article class="example-card">
+                        <h3>The Minimal</h3>
+                        <div class="mini-week">
+                            <div class="mini-day remote">M</div>
+                            <div class="mini-day office">T</div>
+                            <div class="mini-day remote">W</div>
+                            <div class="mini-day office">T</div>
+                            <div class="mini-day remote">F</div>
+                        </div>
+                        <p>Just 2 days in office, typically Tuesday and Thursday. Maximizes remote work while still maintaining in-person presence for key meetings.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p><a href="../../">Days at the Office</a> - Track your office days effortlessly</p>
+                <p style="margin-top: 8px;">&copy; 2025-2026 Best Day Labs LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Hybrid Work Schedule Generator
+         * Generates optimal schedules based on preferences and constraints
+         *
+         * Scoring factors:
+         * - Preferred days get higher scores
+         * - Team overlap days are prioritized
+         * - Consecutive office days are slightly preferred (less context switching)
+         * - Fridays and Mondays score lower for long commutes
+         */
+
+        const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri'];
+        const DAY_NAMES = {
+            mon: 'Monday',
+            tue: 'Tuesday',
+            wed: 'Wednesday',
+            thu: 'Thursday',
+            fri: 'Friday'
+        };
+        const DAY_SHORT = {
+            mon: 'Mon',
+            tue: 'Tue',
+            wed: 'Wed',
+            thu: 'Thu',
+            fri: 'Fri'
+        };
+
+        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const requiredDays = parseInt(document.getElementById('requiredDays').value);
+            const commuteLength = document.getElementById('commuteLength').value;
+
+            // Get preferred days
+            const preferredDays = [];
+            document.querySelectorAll('.day-selector:first-of-type .day-checkbox:checked').forEach(cb => {
+                preferredDays.push(cb.value);
+            });
+
+            // Get team overlap days
+            const teamDays = [];
+            document.querySelectorAll('.day-selector:last-of-type .day-checkbox:checked').forEach(cb => {
+                teamDays.push(cb.value);
+            });
+
+            // Score each day
+            const dayScores = {};
+            DAYS.forEach(day => {
+                let score = 50; // Base score
+
+                // Preferred day bonus
+                if (preferredDays.includes(day)) {
+                    score += 30;
+                }
+
+                // Team overlap bonus
+                if (teamDays.includes(day)) {
+                    score += 25;
+                }
+
+                // Mid-week bonus (generally better for collaboration)
+                if (day === 'tue' || day === 'wed' || day === 'thu') {
+                    score += 10;
+                }
+
+                // Long commute penalty for Mon/Fri
+                if (commuteLength === 'long' && (day === 'mon' || day === 'fri')) {
+                    score -= 15;
+                }
+
+                // Short commute - slight Friday bonus (easier commute)
+                if (commuteLength === 'short' && day === 'fri') {
+                    score += 5;
+                }
+
+                dayScores[day] = score;
+            });
+
+            // Sort days by score
+            const sortedDays = [...DAYS].sort((a, b) => dayScores[b] - dayScores[a]);
+
+            // Select recommended days
+            const recommendedDays = sortedDays.slice(0, requiredDays);
+
+            // Generate alternative schedule (different approach)
+            const alternativeDays = generateAlternative(requiredDays, recommendedDays, preferredDays, teamDays, commuteLength);
+
+            // Render schedules
+            renderSchedule('recommendedWeek', recommendedDays);
+            renderSchedule('alternativeWeek', alternativeDays);
+
+            // Generate explanations
+            document.getElementById('recommendedExplanation').textContent = generateExplanation(recommendedDays, preferredDays, teamDays, commuteLength);
+            document.getElementById('alternativeExplanation').textContent = generateAlternativeExplanation(alternativeDays, recommendedDays);
+
+            // Show results
+            document.getElementById('results').classList.add('visible');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        function generateAlternative(requiredDays, recommended, preferred, teamDays, commuteLength) {
+            // Try a different strategy - prioritize consecutive days
+            const alternatives = [
+                ['mon', 'tue', 'wed', 'thu', 'fri'].slice(0, requiredDays),
+                ['tue', 'wed', 'thu', 'fri'].slice(0, requiredDays),
+                ['mon', 'tue', 'wed'].slice(0, requiredDays),
+                ['wed', 'thu', 'fri'].slice(0, requiredDays),
+                ['tue', 'thu'],
+                ['mon', 'wed', 'fri']
+            ];
+
+            // Find an alternative that differs from recommended
+            for (const alt of alternatives) {
+                if (alt.length === requiredDays && !arraysEqual(alt.sort(), [...recommended].sort())) {
+                    return alt;
+                }
+            }
+
+            // Fallback: shift recommended by one day
+            const fallback = [];
+            const offset = recommended.includes('fri') ? -1 : 1;
+            recommended.forEach(day => {
+                const idx = DAYS.indexOf(day);
+                const newIdx = Math.min(Math.max(idx + offset, 0), 4);
+                if (!fallback.includes(DAYS[newIdx])) {
+                    fallback.push(DAYS[newIdx]);
+                }
+            });
+
+            // Fill if needed
+            while (fallback.length < requiredDays) {
+                for (const day of DAYS) {
+                    if (!fallback.includes(day)) {
+                        fallback.push(day);
+                        break;
+                    }
+                }
+            }
+
+            return fallback.slice(0, requiredDays);
+        }
+
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] !== b[i]) return false;
+            }
+            return true;
+        }
+
+        function renderSchedule(containerId, officeDays) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            DAYS.forEach(day => {
+                const isOffice = officeDays.includes(day);
+                const block = document.createElement('div');
+                block.className = `day-block ${isOffice ? 'office' : 'remote'}`;
+                block.innerHTML = `
+                    <div class="day-name">${DAY_SHORT[day]}</div>
+                    <div class="day-type">${isOffice ? 'Office' : 'Remote'}</div>
+                `;
+                container.appendChild(block);
+            });
+        }
+
+        function generateExplanation(days, preferred, teamDays, commuteLength) {
+            const parts = [];
+
+            // Check if it matches preferences
+            const matchesPreferred = days.every(d => preferred.includes(d));
+            if (matchesPreferred && preferred.length > 0) {
+                parts.push('This schedule aligns with your preferred days');
+            }
+
+            // Check team overlap
+            const teamOverlap = days.filter(d => teamDays.includes(d)).length;
+            if (teamOverlap > 0) {
+                parts.push(`includes ${teamOverlap} team overlap day${teamOverlap > 1 ? 's' : ''}`);
+            }
+
+            // Check for mid-week focus
+            const midWeekDays = days.filter(d => ['tue', 'wed', 'thu'].includes(d)).length;
+            if (midWeekDays >= 2) {
+                parts.push('focuses on mid-week for optimal collaboration');
+            }
+
+            // Commute consideration
+            if (commuteLength === 'long' && !days.includes('mon') && !days.includes('fri')) {
+                parts.push('avoids Monday/Friday commutes');
+            }
+
+            if (parts.length === 0) {
+                return 'This schedule balances your office requirements across the week.';
+            }
+
+            // Capitalize first part
+            parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+
+            return parts.join(', ') + '.';
+        }
+
+        function generateAlternativeExplanation(altDays, recDays) {
+            // Check for consecutive days
+            let isConsecutive = true;
+            const sortedAlt = [...altDays].sort((a, b) => DAYS.indexOf(a) - DAYS.indexOf(b));
+            for (let i = 1; i < sortedAlt.length; i++) {
+                if (DAYS.indexOf(sortedAlt[i]) - DAYS.indexOf(sortedAlt[i-1]) !== 1) {
+                    isConsecutive = false;
+                    break;
+                }
+            }
+
+            if (isConsecutive && altDays.length >= 2) {
+                return 'Consecutive office days mean fewer transitions between work modes and easier scheduling of in-person meetings.';
+            }
+
+            // Check if it's spread out
+            const spread = DAYS.indexOf(sortedAlt[sortedAlt.length - 1]) - DAYS.indexOf(sortedAlt[0]);
+            if (spread >= 3 && altDays.length <= 3) {
+                return 'Spreading office days throughout the week ensures regular in-person presence while maximizing remote flexibility.';
+            }
+
+            return 'An alternative arrangement if your primary schedule doesn\'t work for a particular week.';
+        }
+    </script>
+</body>
+
+</html>
