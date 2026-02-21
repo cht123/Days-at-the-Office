@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days at the Office vs. Manual Tracking: Why Automatic Beats Spreadsheets | Days at the Office</title>
+    <meta name="description" content="Compare 5 ways to track your office days -- spreadsheets, calendar blocking, note apps, employer tools, and automatic GPS tracking. See why automatic wins on effort, accuracy, and privacy.">
+    <meta name="keywords" content="office attendance tracker app, automatic office day tracker, track office days, hybrid work tracking, office attendance spreadsheet, return to office tracking">
+    <link rel="canonical" href="https://daysattheoffice.com/blog/automatic-vs-manual-office-tracking/">
+    <link rel="icon" type="image/x-icon" href="../../favicon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Days at the Office vs. Manual Tracking: Why Automatic Beats Spreadsheets">
+    <meta property="og:description" content="Compare 5 ways to track your office days. Spreadsheets, calendars, notes, employer tools, and automatic GPS -- which method actually works for hybrid workers?">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://daysattheoffice.com/blog/automatic-vs-manual-office-tracking/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Days at the Office vs. Manual Tracking: Why Automatic Beats Spreadsheets">
+    <meta name="twitter:description" content="Compare 5 ways to track your office days. See why automatic GPS tracking beats spreadsheets, calendars, and employer badge systems.">
+
+    <!-- Schema.org Article markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Days at the Office vs. Manual Tracking: Why Automatic Beats Spreadsheets",
+        "description": "Compare 5 ways to track your office days -- spreadsheets, calendar blocking, note apps, employer tools, and automatic GPS tracking. See why automatic wins on effort, accuracy, and privacy.",
+        "author": {
+            "@type": "Organization",
+            "name": "Days at the Office"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Best Day Labs LLC"
+        },
+        "datePublished": "2026-02-21",
+        "dateModified": "2026-02-21"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1A365D;
+            --primary-dark: #102543;
+            --text: #1A365D;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --background: #ffffff;
+            --background-secondary: #f5f5f7;
+            --border: #e5e7eb;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            background: var(--background);
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .site-nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .logo:hover { opacity: 0.8; }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Article */
+        .article-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 104px 24px 80px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* Article Header */
+        .article-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        /* Body Content */
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .article-container a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .article-container a:hover { text-decoration: underline; }
+
+        /* Callout Box */
+        .callout {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .callout p {
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+        .callout strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+        .comparison-table th {
+            background: var(--text-primary);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .comparison-table tr:nth-child(even) td {
+            background: #f9fafb;
+        }
+        .comparison-table .good { color: var(--success); font-weight: 600; }
+        .comparison-table .ok { color: var(--warning); font-weight: 600; }
+        .comparison-table .bad { color: var(--danger); font-weight: 600; }
+
+        /* Method Cards */
+        .method-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .method-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .method-number {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .pros-cons div {
+            font-size: 14px;
+        }
+        .pros-cons .label {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .pros-cons .pro .label { color: var(--success); }
+        .pros-cons .con .label { color: var(--danger); }
+        .pros-cons ul {
+            list-style: none;
+            padding: 0;
+        }
+        .pros-cons li {
+            color: var(--text-secondary);
+            padding: 2px 0;
+        }
+        .pros-cons .pro li::before { content: "\2713 "; color: var(--success); }
+        .pros-cons .con li::before { content: "\2717 "; color: var(--danger); }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2563eb 100%);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-box h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        .cta-box p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* TOC */
+        .toc {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .toc h4 {
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+        .toc ol {
+            padding-left: 20px;
+        }
+        .toc li {
+            padding: 4px 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .toc a {
+            color: var(--text-secondary);
+        }
+        .toc a:hover { color: var(--accent); }
+
+        /* FAQ Schema */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: #86868b;
+            margin-top: 16px;
+        }
+
+        .footer-logo {
+            color: white;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #86868b;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 24px 0;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #86868b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid #d2d2d7;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 { font-size: 1.75rem; }
+            .pros-cons { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 13px; }
+            .comparison-table th, .comparison-table td { padding: 8px 10px; }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+    <div class="nav-container">
+        <a href="/" class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z"
+                    fill="#1a365d"></path>
+                <circle cx="50" cy="40" r="22" fill="white"></circle>
+                <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <span>Days at the Office</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/blog/how-to-track-office-days/" class="active">Blog</a></li>
+            <li><a href="/#support">Support</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">&#9776;</button>
+    </div>
+</nav>
+
+<article class="article-container">
+
+    <nav class="breadcrumb">
+        <a href="/">Home</a> &rsaquo; <a href="/blog/how-to-track-office-days/">Blog</a> &rsaquo; Automatic vs. Manual Office Tracking
+    </nav>
+
+    <div class="article-meta">
+        <time datetime="2026-02-21">February 21, 2026</time> &middot; 12 min read
+    </div>
+
+    <h1>Days at the Office vs. Manual Tracking: Why Automatic Beats Spreadsheets</h1>
+
+    <p class="article-subtitle">
+        You started tracking your office days in a spreadsheet. Then you forgot to update it for two weeks. Sound familiar? Here's an honest comparison of five ways hybrid workers track their office attendance -- and why automatic GPS tracking eliminates the one problem all manual methods share.
+    </p>
+
+    <div class="callout">
+        <p><strong>The tracking gap is real:</strong> In a 2025 Owl Labs survey, 62% of hybrid workers said they couldn't accurately recall how many days they were in the office the previous month. When companies are actively enforcing <a href="/blog/rto-compliance-prove-office-attendance/">RTO compliance policies</a>, "I think it was three days?" isn't good enough. The tracking method you choose determines whether your records are reliable or just guesswork.</p>
+    </div>
+
+    <nav class="toc">
+        <h4>In This Guide</h4>
+        <ol>
+            <li><a href="#tracking-problem">The Tracking Problem Every Hybrid Worker Faces</a></li>
+            <li><a href="#spreadsheets">Method 1: Spreadsheets</a></li>
+            <li><a href="#calendar-blocking">Method 2: Calendar Blocking</a></li>
+            <li><a href="#note-apps">Method 3: Note-Taking Apps</a></li>
+            <li><a href="#employer-tools">Method 4: Employer Tools</a></li>
+            <li><a href="#automatic-gps">Method 5: Automatic GPS Tracking</a></li>
+            <li><a href="#comparison">Head-to-Head Comparison</a></li>
+            <li><a href="#cost-of-forgetting">The Real Cost of Forgetting to Track</a></li>
+            <li><a href="#why-automatic-wins">Why Automatic Tracking Wins</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ol>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <h2 id="tracking-problem">The Tracking Problem Every Hybrid Worker Faces</h2>
+
+    <p>Hybrid work has fundamentally changed how we think about "being at work." When every day was an office day, no one needed to track attendance -- it was the default. But in a world where you might be in the office Monday and Wednesday, work from home Tuesday and Thursday, and take Friday off, suddenly you need a system to remember which days you actually showed up.</p>
+
+    <p>This isn't a trivial problem. Your company probably has a policy -- maybe it's three days per week, maybe it's a percentage-based target, maybe it's "core days" plus flexible days. Whatever the specifics, you need to know where you stand at any given moment. Are you on track this month? Did you hit your target last quarter? Can you work from home Friday without falling below your minimum?</p>
+
+    <p>Most people start with the simplest tool available: a spreadsheet, a calendar, or a quick note on their phone. And for the first week or two, it works fine. The problem is what happens on week three, when you're running late for a meeting, your kid is sick, and updating your attendance tracker is the last thing on your mind. One missed entry becomes two, becomes a week, and suddenly your "tracking system" has a gap you can't fill.</p>
+
+    <p>This is the fundamental tension of office attendance tracking: <strong>the methods that require daily effort are the ones most likely to fail when life gets busy.</strong> And life always gets busy.</p>
+
+    <p>Let's look at five common approaches, honestly assess what each one does well and where it falls short, and see how they compare when it comes to the metrics that actually matter for hybrid workers.</p>
+
+    <!-- SECTION 2 -->
+    <h2 id="spreadsheets">Method 1: Spreadsheets -- The Universal Starting Point</h2>
+
+    <div class="method-card">
+        <h3><span class="method-number">1</span> Spreadsheets (Google Sheets, Excel)</h3>
+        <p>The spreadsheet is the Swiss Army knife of personal tracking. It's flexible, familiar, and free. Most hybrid workers who decide to track their office days start here -- and for good reason. You create a simple grid with dates and locations, type "office" or "WFH" each day, and add a formula to count your totals. It takes about five minutes to set up and requires zero new software.</p>
+        <p>The appeal of spreadsheets is their complete flexibility. You can track whatever you want -- arrival times, departure times, which office location, whether you took public transit or drove. You can add conditional formatting, build charts, create monthly summaries. If you're the kind of person who enjoys building systems, spreadsheets can become genuinely satisfying to maintain.</p>
+        <p>But that's exactly where the problem lies. <strong>Spreadsheets require you to remember to update them every single day.</strong> There's no reminder, no automation, no fallback. If you forget Monday, you might be able to reconstruct it from memory on Tuesday. But if you forget Monday through Friday, good luck remembering which days you were actually in the office by the following week. A <a href="/blog/how-to-track-office-days/">complete guide to tracking methods</a> won't change this fundamental limitation.</p>
+        <p>In practice, spreadsheet-based tracking has an extremely high abandonment rate. People maintain them religiously for a few weeks, then gradually stop updating, then months later realize they have a gap in their records right when they need the data most.</p>
+        <div class="pros-cons">
+            <div class="pro">
+                <div class="label">Pros</div>
+                <ul>
+                    <li>Free and universally accessible</li>
+                    <li>Completely customizable</li>
+                    <li>Easy to share with managers</li>
+                    <li>Formulas auto-calculate totals</li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="label">Cons</div>
+                <ul>
+                    <li>100% manual -- requires daily input</li>
+                    <li>No verification of actual attendance</li>
+                    <li>High abandonment rate</li>
+                    <li>Gaps can't be filled retroactively</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;"><strong>Best for:</strong> People who already live in spreadsheets and have strong daily habits. Breaks down quickly for everyone else.</p>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2 id="calendar-blocking">Method 2: Calendar Blocking -- Tracking Inside Your Workflow</h2>
+
+    <div class="method-card">
+        <h3><span class="method-number">2</span> Calendar Blocking (Google Calendar, Outlook)</h3>
+        <p>Calendar blocking is the second most common approach, and it has a clear advantage over spreadsheets: your calendar is already open. Instead of switching to a separate app or file, you create an all-day event called "In Office" or "WFH" on the appropriate days. It's visible to your team, it integrates with your scheduling, and it takes about three seconds per day.</p>
+        <p>Many hybrid workers like this approach because it serves double duty. The calendar block tells your team where you'll be, and it simultaneously creates an attendance record. Some teams have even standardized this -- everyone marks their in-office days with a specific calendar color, making it easy for managers and colleagues to see who'll be in on any given day.</p>
+        <p>The downside is that calendar events are aspirational, not factual. You block "In Office" on Wednesday because you plan to go in. But then your kid wakes up with a fever, and you work from home instead. Do you go back and delete the calendar event? Most people don't. Your calendar says you were in the office, but you weren't. Over months, these small inaccuracies compound into a record that's directionally right but specifically wrong.</p>
+        <p>There's also the retroactive problem. If you forget to block a day, it's gone. Calendars don't have a "fill in yesterday" feature that makes intuitive sense. You can add an event to a past date, but it feels strange and it's easy to get the date wrong. And if you're trying to reconstruct a whole week from memory, you're back to the same reliability problem as spreadsheets.</p>
+        <div class="pros-cons">
+            <div class="pro">
+                <div class="label">Pros</div>
+                <ul>
+                    <li>Already part of your daily workflow</li>
+                    <li>Visible to your team</li>
+                    <li>Quick to create (seconds per day)</li>
+                    <li>Serves dual purpose (planning + tracking)</li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="label">Cons</div>
+                <ul>
+                    <li>Records intent, not actual attendance</li>
+                    <li>Plans change but calendar often doesn't</li>
+                    <li>No verification or timestamps</li>
+                    <li>Hard to extract attendance data at scale</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;"><strong>Best for:</strong> Teams that use shared calendars for coordination. Less reliable as a personal compliance record.</p>
+    </div>
+
+    <!-- SECTION 4 -->
+    <h2 id="note-apps">Method 3: Note-Taking Apps -- The Quick-and-Dirty Log</h2>
+
+    <div class="method-card">
+        <h3><span class="method-number">3</span> Note-Taking Apps (Apple Notes, Notion, Obsidian)</h3>
+        <p>Some hybrid workers skip structured tracking entirely and just jot notes. "Mon 2/17 - office." "Tue 2/18 - WFH." It's the digital equivalent of ticking days off on a wall calendar. Apple Notes is the most common choice because it's already on every iPhone, but Notion, Obsidian, and similar tools all work the same way for this purpose.</p>
+        <p>The simplicity is appealing. There's no template to set up, no formulas to write, no app to download. You open Notes, type today's date and location, and close it. Total time: five seconds. For people who resist any kind of structured system, this is often the only approach they'll actually try.</p>
+        <p>The problems become obvious quickly. Notes don't calculate totals. If your manager asks, "How many days were you in the office last month?" you have to count entries manually. Notes don't validate dates, so you might accidentally write "2/30" and not notice. Notes don't catch missed entries, so if you skip a Friday, there's no indicator that data is missing -- you just have a gap in a freeform text file. And if you need to share your records, you're sending someone a wall of unformatted text.</p>
+        <p>The note-taking approach also tends to degrade over time even faster than spreadsheets. Because there's no structure, there's no friction when you stop. A spreadsheet with empty rows at least looks incomplete. A note that ends mid-month just looks like the note ended. There's no visual cue that you've fallen behind.</p>
+        <div class="pros-cons">
+            <div class="pro">
+                <div class="label">Pros</div>
+                <ul>
+                    <li>Zero setup required</li>
+                    <li>Works with any notes app</li>
+                    <li>Extremely fast daily entry</li>
+                    <li>Flexible and freeform</li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="label">Cons</div>
+                <ul>
+                    <li>No automatic calculations or summaries</li>
+                    <li>No verification of attendance</li>
+                    <li>Easy to forget without consequences</li>
+                    <li>Unprofessional to share as evidence</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;"><strong>Best for:</strong> People who just want a rough personal log. Not suitable for compliance documentation or sharing with HR.</p>
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2 id="employer-tools">Method 4: Employer Tools -- You're Not the Customer</h2>
+
+    <div class="method-card">
+        <h3><span class="method-number">4</span> Employer Tools (Badge Systems, Envoy, Robin, VergeSense)</h3>
+        <p>Many companies have invested in workplace management platforms that track employee attendance automatically. Badge-swipe systems record when you enter the building. Desk booking tools like Envoy and Robin know when you've reserved and checked into a workspace. Sensor-based systems like VergeSense can detect occupancy at the desk level. From the company's perspective, these tools solve the attendance tracking problem completely.</p>
+        <p>But here's the critical thing to understand: <strong>these tools are built for your employer, not for you.</strong> You are the data subject, not the data owner. The information flows to your company's HR systems, your manager's dashboards, and your performance review. You may not be able to see your own data. You almost certainly can't export it. And if the system makes an error -- a missed badge swipe, a sensor that didn't register you, a desk booking that failed to check you in automatically -- the mistake works against you, not for you.</p>
+        <p>This creates a fundamental power imbalance. Your employer has a complete (or at least their version of complete) record of your attendance, and you have nothing. If there's a disagreement about whether you met your in-office requirement last quarter, their system is the authority, and you have no counter-evidence to offer. As we've detailed in our <a href="/blog/rto-compliance-prove-office-attendance/">guide to RTO compliance</a>, relying solely on employer-managed systems leaves you vulnerable.</p>
+        <p>There's also a privacy dimension. Employer tracking tools often collect far more data than simple attendance. They may track which floor you're on, which desk you sit at, how long you spend in different areas, and when you leave. This data is used for space planning and utilization analysis, but it also creates a detailed map of your physical behavior in the workplace -- one that you don't control.</p>
+        <div class="pros-cons">
+            <div class="pro">
+                <div class="label">Pros</div>
+                <ul>
+                    <li>Automatic -- no daily effort</li>
+                    <li>Company-recognized data source</li>
+                    <li>Integrated with HR systems</li>
+                    <li>High accuracy when working correctly</li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="label">Cons</div>
+                <ul>
+                    <li>You don't own or control the data</li>
+                    <li>Often can't view your own records</li>
+                    <li>Misses tailgating, open doors, multi-building access</li>
+                    <li>Errors work against you, not for you</li>
+                    <li>Extensive surveillance beyond attendance</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;"><strong>Best for:</strong> Employers. Not designed to serve the employee's interest in maintaining their own records.</p>
+    </div>
+
+    <!-- Mid-article CTA -->
+    <div class="cta-box">
+        <h3>Stop Tracking Manually. Start Tracking Automatically.</h3>
+        <p>Days at the Office uses GPS geofencing to log your office visits with zero daily effort. Your data stays on your device -- no spreadsheets, no forgetting, no employer surveillance.</p>
+        <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348" class="cta-button">Download Free on the App Store</a>
+    </div>
+
+    <!-- SECTION 6 -->
+    <h2 id="automatic-gps">Method 5: Automatic GPS Tracking with Days at the Office</h2>
+
+    <div class="method-card" style="border-color: var(--accent); border-width: 2px;">
+        <h3><span class="method-number">5</span> Automatic GPS Tracking (Days at the Office App)</h3>
+        <p>Automatic GPS tracking solves the fundamental problem that plagues every manual method: it doesn't require you to do anything. You set up the app once -- define your office location, set your time threshold, grant location permissions -- and then forget about it. The app detects when you arrive at and leave your office using GPS geofencing and creates a timestamped, verified log of every visit.</p>
+        <p>The key distinction from employer tools is ownership. <strong>Your data stays entirely on your device.</strong> It's never uploaded to a server, never shared with the app developer, never accessible to your employer. You are the sole owner and controller of your attendance records. When you want to share them -- exporting a CSV for your manager or a PDF for your own files -- you do so explicitly, on your terms.</p>
+        <p>The technology behind it is worth understanding because it directly addresses the most common concern people have. The app uses iOS geofencing, not continuous GPS tracking. It doesn't monitor your location every few seconds. Instead, it registers a virtual boundary around your office, and iOS's built-in location services notify the app only when you cross that boundary. This is the same low-power mechanism that Apple uses for location-based reminders. The battery impact is negligible -- most users report no noticeable difference in battery life.</p>
+        <p>Because the tracking is GPS-verified, your records carry more weight than self-reported data. A spreadsheet entry that says "office" is only as credible as your memory. A GPS-verified timestamp that shows you arrived at 8:47 AM and left at 5:23 PM is objective, verifiable evidence.</p>
+        <p>The app also introduces the concept of "qualified days" -- visits that meet a minimum duration threshold you define. If your company requires at least four hours on-site for a day to count, you set that as your threshold. The app tracks all visits but only counts the ones that meet your criteria toward your compliance total. Check your <a href="/tools/office-attendance-percentage-calculator/">office attendance percentage</a> to see if you're on track.</p>
+        <div class="pros-cons">
+            <div class="pro">
+                <div class="label">Pros</div>
+                <ul>
+                    <li>Completely automatic -- zero daily effort</li>
+                    <li>GPS-verified with timestamps</li>
+                    <li>Data stays on your personal device</li>
+                    <li>Exportable records (CSV/PDF)</li>
+                    <li>Configurable time thresholds</li>
+                    <li>Free tier available</li>
+                </ul>
+            </div>
+            <div class="con">
+                <div class="label">Cons</div>
+                <ul>
+                    <li>Requires location permission (Always Allow)</li>
+                    <li>GPS accuracy varies slightly indoors</li>
+                    <li>iOS only (currently)</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 14px;"><strong>Best for:</strong> Any hybrid worker who wants reliable, verified attendance records without adding another daily task to their routine.</p>
+    </div>
+
+    <!-- SECTION 7 -->
+    <h2 id="comparison">Head-to-Head Comparison: All Five Methods</h2>
+
+    <p>Let's put all five tracking methods side by side across the six dimensions that matter most to hybrid workers. This comparison is meant to be honest -- every method has strengths, and the right choice depends on your priorities.</p>
+
+    <div style="overflow-x: auto;">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>Spreadsheets</th>
+                    <th>Calendar</th>
+                    <th>Notes</th>
+                    <th>Employer Tools</th>
+                    <th>GPS Auto-Track</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Daily Effort</strong></td>
+                    <td class="bad">High</td>
+                    <td class="ok">Medium</td>
+                    <td class="ok">Medium</td>
+                    <td class="good">None</td>
+                    <td class="good">None</td>
+                </tr>
+                <tr>
+                    <td><strong>Accuracy</strong></td>
+                    <td class="ok">Self-reported</td>
+                    <td class="bad">Intent-based</td>
+                    <td class="ok">Self-reported</td>
+                    <td class="ok">Gaps common</td>
+                    <td class="good">GPS-verified</td>
+                </tr>
+                <tr>
+                    <td><strong>Reliability</strong></td>
+                    <td class="bad">Degrades fast</td>
+                    <td class="ok">Moderate</td>
+                    <td class="bad">Degrades fast</td>
+                    <td class="ok">System-dependent</td>
+                    <td class="good">Consistent</td>
+                </tr>
+                <tr>
+                    <td><strong>Privacy</strong></td>
+                    <td class="good">You own it</td>
+                    <td class="ok">Employer-visible</td>
+                    <td class="good">You own it</td>
+                    <td class="bad">Employer-owned</td>
+                    <td class="good">On-device only</td>
+                </tr>
+                <tr>
+                    <td><strong>Exportability</strong></td>
+                    <td class="good">CSV native</td>
+                    <td class="ok">Limited</td>
+                    <td class="bad">Unstructured</td>
+                    <td class="bad">Rarely available</td>
+                    <td class="good">CSV/PDF</td>
+                </tr>
+                <tr>
+                    <td><strong>Cost</strong></td>
+                    <td class="good">Free</td>
+                    <td class="good">Free</td>
+                    <td class="good">Free</td>
+                    <td class="good">Free (to you)</td>
+                    <td class="good">Free tier</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>A few patterns emerge from this comparison. Manual methods (spreadsheets, calendars, notes) all share the same fatal flaw: they depend on you remembering to update them every day. The moment you forget -- and you will forget -- your record develops gaps that can't be reliably filled. Employer tools solve the effort problem but create a different one: you don't own or control the data, and errors in the system work against you, not for you.</p>
+
+    <p>Automatic GPS tracking is the only method that scores well across all six dimensions. It requires no daily effort, produces verified records, keeps data private and on-device, and exports cleanly when you need to share. The trade-offs are real but narrow: it requires location permissions, it's currently iOS-only, and indoor GPS accuracy isn't perfect. For the vast majority of hybrid workers, these limitations are minor compared to the benefits.</p>
+
+    <div class="callout">
+        <p><strong>Wondering what your office days actually cost?</strong> Use our <a href="/tools/commute-cost-calculator/">Commute Cost Calculator</a> to see the real price of each trip to the office, or try the <a href="/tools/return-to-office-cost-calculator/">RTO Cost Calculator</a> to understand the full financial impact of your company's policy. Tracking your days is the first step -- understanding their true cost is the next.</p>
+    </div>
+
+    <!-- SECTION 8 -->
+    <h2 id="cost-of-forgetting">The Real Cost of Forgetting to Track</h2>
+
+    <p>Every manual tracking method has the same single point of failure: you. And the consequences of that failure go beyond just having an incomplete record. Here's what's actually at stake when your tracking habit lapses.</p>
+
+    <h3>Compliance blind spots</h3>
+
+    <p>When you don't have reliable records, you lose visibility into your own compliance status. You think you've been going in three days a week, but have you really? Memory is unreliable -- we tend to remember the days we went in and forget the days we didn't. Without accurate data, you might believe you're hitting your target when you're actually falling short. By the time your manager flags the issue, you've already accumulated weeks of non-compliance you can't dispute.</p>
+
+    <p>As companies move toward <a href="/blog/rto-compliance-prove-office-attendance/">stricter RTO enforcement</a>, this blind spot becomes increasingly dangerous. The gap between your perception of your attendance and your actual attendance is exactly where compliance problems hide.</p>
+
+    <h3>Lost leverage in disputes</h3>
+
+    <p>Attendance disputes between employees and managers are more common than most people realize. Your manager says you were only in the office twice last week. You're sure it was three times. Without records, this becomes a he-said-she-said situation that you will almost always lose -- because your manager likely has at least some data from badge systems or booking tools, and you have nothing but your memory.</p>
+
+    <p>Having your own verified, timestamped records completely changes the dynamic. You're not arguing from memory; you're presenting evidence. In most cases, the dispute is resolved immediately, and often in your favor. The mere existence of independent records tends to prevent disputes from escalating in the first place.</p>
+
+    <h3>Data you can never recover</h3>
+
+    <p>Here's the thing about office attendance data: <strong>you can't reconstruct it after the fact.</strong> If you don't track Tuesday, February 3rd, there's no way to go back and determine with certainty whether you were in the office that day. You might check your email timestamps, look at your calendar, ask a colleague -- but none of that produces the kind of reliable, verified record that matters when it counts.</p>
+
+    <p>This is fundamentally different from other personal data. If you forget to log a run in your fitness app, you can check your Apple Watch or GPS data. If you forget to record a meal, it doesn't matter much. But attendance data is time-sensitive and location-specific, and once the moment passes, the data is gone. Every day you don't track is a day you can never get back.</p>
+
+    <h3>Optimization you can't do</h3>
+
+    <p>Beyond compliance, attendance tracking data helps you make smarter decisions about your hybrid schedule. Which days tend to be most productive in the office? What's your average commute time on different days of the week? Are you spending more time in the office than required? Use a tool like our <a href="/tools/best-days-to-go-into-the-office/">Best Days to Go Into the Office</a> analyzer to optimize once you have the data -- but you need the data first.</p>
+
+    <p>You can also use the <a href="/tools/hybrid-work-schedule-generator/">Hybrid Work Schedule Generator</a> to build a plan, but the best plans are informed by real data about your actual patterns, not assumptions about what you think you do.</p>
+
+    <!-- SECTION 9 -->
+    <h2 id="why-automatic-wins">Why Automatic Tracking Wins</h2>
+
+    <p>After comparing all five methods, the case for automatic tracking comes down to three principles that apply regardless of your company, your role, or your hybrid schedule.</p>
+
+    <h3>Zero daily effort means zero failure rate</h3>
+
+    <p>Every tracking system that requires daily input will eventually fail. Not because you're lazy or forgetful -- because you're human. You'll have days where you're rushing to a meeting, dealing with a crisis, managing a sick kid, or just mentally exhausted. On those days, updating your attendance tracker falls to the bottom of the priority list. And that's exactly when the gap appears.</p>
+
+    <p>Automatic GPS tracking removes this variable entirely. There is no daily task. There is nothing to remember. The app uses iOS geofencing to detect your arrival and departure, and it logs the visit without any input from you. Your records are complete not because of your discipline, but because of the system's design. The tracking habit can't lapse because there is no habit -- it's infrastructure.</p>
+
+    <h3>GPS verification adds credibility</h3>
+
+    <p>Self-reported data has an inherent credibility problem. When you tell your manager "I was in the office 14 days last month," they have to take your word for it. And in an environment where companies are <a href="/blog/hidden-costs-going-back-to-office/">investing heavily in office space</a> and expecting employees to use it, trust-but-verify is becoming the norm.</p>
+
+    <p>GPS-verified timestamps are different. They're objective, they're precise, and they can't be easily fabricated. A record showing you arrived at 8:47 AM and left at 5:23 PM on a specific date, verified by your device's location services, carries more weight than a spreadsheet entry that says "office." You're not asking anyone to trust your memory -- you're presenting data.</p>
+
+    <h3>Privacy-first means your data serves you</h3>
+
+    <p>The final piece is ownership. Employer tools track your attendance, but the data serves the employer. Spreadsheets and calendars are yours, but they require effort and lack verification. A privacy-first automatic tracker gives you the best of both worlds: verified, effort-free tracking where you -- and only you -- own the data.</p>
+
+    <p>With <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348">Days at the Office</a>, your attendance records never leave your device. They're never uploaded to a cloud server. They're never accessible to the app developer, your employer, or anyone else. You decide when and how to share them. This isn't just a technical detail -- it's the difference between being tracked and tracking for yourself.</p>
+
+    <p>If you're choosing <a href="/blog/best-days-to-go-into-the-office/">which days to go into the office</a>, having your own reliable data helps you make better decisions. And if your company ever questions your attendance, you have verified records ready to go.</p>
+
+    <!-- Final CTA -->
+    <div class="cta-box">
+        <h3>Replace Your Spreadsheet in Two Minutes</h3>
+        <p>Set up Days at the Office once, and never manually track an office day again. GPS-verified, on-device, and completely automatic. Free to download with a Pro upgrade for advanced features.</p>
+        <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348" class="cta-button">Download Free on the App Store</a>
+    </div>
+
+    <!-- SECTION 10: FAQ -->
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <!-- FAQ Schema markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is there a free office attendance tracker app?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Days at the Office offers a free tier that includes automatic GPS-based attendance tracking, visit logging, and basic reporting. A Pro subscription unlocks advanced features like multiple office locations, detailed analytics, and enhanced export options. The free tier is fully functional for most hybrid workers who need to track attendance at a single office."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does automatic GPS tracking drain my phone battery?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Days at the Office uses iOS geofencing, which is a low-power monitoring mode built into the operating system. Unlike continuous GPS tracking, geofencing only activates the GPS hardware briefly when you cross a boundary (arriving at or leaving your office). It uses WiFi and cell tower data for most monitoring. Most users report no noticeable impact on battery life."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can my employer see my data if I use a personal attendance tracker?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. With a privacy-first app like Days at the Office, all data is stored locally on your device and is never uploaded to any server. The app developer cannot access your data, and your employer has no way to see it. You only share your records when you explicitly choose to export them -- for example, emailing a CSV or PDF to your manager."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why not just use a spreadsheet to track office days?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Spreadsheets work well for the first few weeks but have a very high abandonment rate. They require daily manual input with no reminders or verification, and any day you forget to update creates a gap you can't reliably fill later. Automatic tracking eliminates this problem entirely -- there's nothing to remember, nothing to type, and no gaps in your record."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is a GPS-verified attendance record accepted as proof by employers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While GPS-verified records aren't an official standard, they carry significantly more weight than self-reported data in any attendance discussion. A timestamped log showing your arrival and departure times, verified by your device's location services, is objective evidence that's difficult to dispute. Many HR teams will accept such records as credible supplementary evidence alongside badge data or other company systems."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Days at the Office work with Android?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Currently, Days at the Office is available only on iOS (iPhone). An Android version is not yet available. If you use an Android device, you would need to use one of the manual tracking methods (spreadsheets, calendar blocking, or notes) until a cross-platform solution becomes available."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <div class="faq-item">
+        <div class="faq-question">Is there a free office attendance tracker app?</div>
+        <div class="faq-answer">Yes. Days at the Office offers a free tier that includes automatic GPS-based attendance tracking, visit logging, and basic reporting. A Pro subscription unlocks advanced features like multiple office locations, detailed analytics, and enhanced export options. The free tier is fully functional for most hybrid workers who need to track attendance at a single office.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Does automatic GPS tracking drain my phone battery?</div>
+        <div class="faq-answer">No. Days at the Office uses iOS geofencing, which is a low-power monitoring mode built into the operating system. Unlike continuous GPS tracking, geofencing only activates the GPS hardware briefly when you cross a boundary (arriving at or leaving your office). It uses WiFi and cell tower data for most monitoring. Most users report no noticeable impact on battery life.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Can my employer see my data if I use a personal attendance tracker?</div>
+        <div class="faq-answer">No. With a privacy-first app like Days at the Office, all data is stored locally on your device and is never uploaded to any server. The app developer cannot access your data, and your employer has no way to see it. You only share your records when you explicitly choose to export them -- for example, emailing a CSV or PDF to your manager.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Why not just use a spreadsheet to track office days?</div>
+        <div class="faq-answer">Spreadsheets work well for the first few weeks but have a very high abandonment rate. They require daily manual input with no reminders or verification, and any day you forget to update creates a gap you can't reliably fill later. Automatic tracking eliminates this problem entirely -- there's nothing to remember, nothing to type, and no gaps in your record.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Is a GPS-verified attendance record accepted as proof by employers?</div>
+        <div class="faq-answer">While GPS-verified records aren't an official standard, they carry significantly more weight than self-reported data in any attendance discussion. A timestamped log showing your arrival and departure times, verified by your device's location services, is objective evidence that's difficult to dispute. Many HR teams will accept such records as credible supplementary evidence alongside badge data or other company systems.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Does Days at the Office work with Android?</div>
+        <div class="faq-answer">Currently, Days at the Office is available only on iOS (iPhone). An Android version is not yet available. If you use an Android device, you would need to use one of the manual tracking methods (spreadsheets, calendar blocking, or notes) until a cross-platform solution becomes available.</div>
+    </div>
+
+    <!-- Related Content -->
+    <h2>Related Reading</h2>
+    <p>
+        <a href="/blog/how-to-track-office-days/">How to Track Your Office Days in 2026: The Complete Guide for Hybrid Workers</a> -- The comprehensive overview of every tracking method available today.
+    </p>
+    <p>
+        <a href="/blog/rto-compliance-prove-office-attendance/">RTO Compliance: How to Prove You Were in the Office</a> -- Why keeping your own attendance records is essential in the current enforcement climate.
+    </p>
+    <p>
+        <a href="/blog/hidden-costs-going-back-to-office/">The Hidden Costs of Going Back to the Office</a> -- What your office days really cost beyond commute time.
+    </p>
+    <p>
+        <a href="/blog/best-days-to-go-into-the-office/">Best Days to Go Into the Office</a> -- Data-driven guidance on which days deliver the most value.
+    </p>
+
+    <h2>Related Tools</h2>
+    <p>Try our free tools to help plan and optimize your hybrid work schedule:</p>
+    <p>
+        <a href="/tools/commute-cost-calculator/">Commute Cost Calculator</a> -- See what your office days are actually costing you.<br>
+        <a href="/tools/return-to-office-cost-calculator/">RTO Cost Calculator</a> -- Calculate the full financial impact of your return-to-office policy.<br>
+        <a href="/tools/office-attendance-percentage-calculator/">Attendance Calculator</a> -- Check if you're meeting your company's attendance requirements.<br>
+        <a href="/tools/hybrid-work-schedule-generator/">Schedule Generator</a> -- Build an optimal hybrid work schedule.<br>
+        <a href="/tools/best-days-to-go-into-the-office/">Best Office Days</a> -- Find out which days are best to be in-office.
+    </p>
+
+</article>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="/" class="logo footer-logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z"
+                        fill="currentColor" />
+                    <circle cx="50" cy="40" r="22" fill="#1A365D" />
+                    <path d="M50 24v18l12 7" stroke="white" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Days at the Office
+            </a>
+            <p>A personal attendance tracker for hybrid workers. Know your office days without the hassle.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Product</h4>
+            <ul>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="/tools/">Free Tools</a></li>
+                <li><a href="/blog/how-to-track-office-days/">Blog</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="/#support">Help Center</a></li>
+                <li><a href="mailto:bestdaylabs@gmail.com">Contact Us</a></li>
+                <li><a href="/#faq">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="/#privacy">Privacy Policy</a></li>
+                <li><a href="/#terms">Terms of Service</a></li>
+                <li><a href="/#accessibility">Accessibility</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025-2026 Days at the Office. All rights reserved.</p>
+        <p style="margin-top: 8px;">Made with care for hybrid workers everywhere.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
