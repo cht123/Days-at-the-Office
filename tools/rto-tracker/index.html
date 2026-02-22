@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9K8FEHDHYL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9K8FEHDHYL');
+    </script>
+    <title>2026 Return-to-Office Tracker: Which Companies Are Requiring RTO? | Days at the Office</title>
+    <meta name="description" content="Track which companies are requiring return-to-office in 2026. Searchable database of 40+ company RTO policies including Amazon, Microsoft, Google, JPMorgan and more. Updated weekly.">
+    <meta name="keywords" content="return to office tracker, RTO tracker 2026, which companies are going back to office, company RTO policies, return to office mandates 2026, hybrid work policies">
+    <link rel="canonical" href="https://daysattheoffice.com/tools/rto-tracker/">
+    <link rel="icon" type="image/x-icon" href="../../favicon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="2026 Return-to-Office Tracker: Which Companies Are Requiring RTO?">
+    <meta property="og:description" content="Searchable database of 40+ company RTO policies for 2026. Find out which companies are requiring full-time office, hybrid, or still allowing remote work.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daysattheoffice.com/rto-tracker/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2026 Return-to-Office Tracker">
+    <meta name="twitter:description" content="Which companies are requiring return-to-office in 2026? Searchable tracker of 40+ company RTO policies, updated weekly.">
+
+    <!-- Schema.org Dataset markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "2026 Return-to-Office Company Tracker",
+        "description": "A comprehensive, searchable database of company return-to-office (RTO) policies for 2026, including required office days, effective dates, and industry breakdown.",
+        "creator": {
+            "@type": "Organization",
+            "name": "Days at the Office"
+        },
+        "dateModified": "2026-02-21",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which companies are requiring 5 days in office in 2026?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As of February 2026, companies requiring 5 days in office include Amazon, JPMorgan Chase, AT&T, Goldman Sachs, Paramount Skydance, Novo Nordisk, Home Depot, PNC Financial, Samsung (semiconductor), and TikTok."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many companies have return-to-office mandates in 2026?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "According to a JLL survey, 55% of Fortune 100 companies now require five-day office attendance, up from just 5% in 2021. Our tracker covers 40+ major companies with documented RTO policies for 2026."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which companies still allow remote work in 2026?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Several companies maintain remote-first or flexible policies including Spotify, Airbnb, Dropbox, Coinbase, Reddit, and Zillow. However, fully remote options have decreased from 21% to 7% of companies between 2023 and 2024."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --bg: #ffffff;
+            --border: #e5e7eb;
+            --success: #059669;
+            --success-light: #ecfdf5;
+            --warning: #d97706;
+            --warning-light: #fffbeb;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --info: #6366f1;
+            --info-light: #eef2ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            background: var(--bg);
+        }
+
+        .page-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 104px 24px 80px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        h1 {
+            font-size: 2.25rem;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .last-updated {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .last-updated strong { color: var(--success); }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: #f9fafb;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .stat-number.red { color: var(--danger); }
+        .stat-number.orange { color: var(--warning); }
+        .stat-number.blue { color: var(--accent); }
+        .stat-number.green { color: var(--success); }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* Search & Filter */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .result-count {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* Table */
+        .tracker-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .tracker-table th {
+            background: var(--text-primary);
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .tracker-table th:hover { background: #2a2a4e; }
+        .tracker-table th .sort-icon { margin-left: 4px; opacity: 0.5; }
+        .tracker-table th.sorted .sort-icon { opacity: 1; }
+
+        .tracker-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+        .tracker-table tr:nth-child(even) td { background: #f9fafb; }
+        .tracker-table tr:hover td { background: var(--accent-light); }
+
+        .company-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Policy badges */
+        .policy-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .policy-5 { background: var(--danger-light); color: var(--danger); }
+        .policy-4 { background: var(--warning-light); color: var(--warning); }
+        .policy-3 { background: var(--info-light); color: var(--info); }
+        .policy-flex { background: var(--success-light); color: var(--success); }
+        .policy-remote { background: #f0fdf4; color: #15803d; }
+
+        /* Industry tags */
+        .industry-tag {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .source-link {
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        /* Intro text */
+        .intro-text {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--accent-light);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .cta-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .cta-button:hover { background: #1d4ed8; text-decoration: none; }
+
+        /* FAQ */
+        .faq-section { margin-top: 48px; }
+        .faq-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Internal links */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        .internal-links ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .internal-links li a {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #f9fafb;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .internal-links li a:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            .page-container { padding: 24px 16px 60px; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .controls { flex-direction: column; }
+            .tracker-table { font-size: 13px; }
+            .tracker-table th, .tracker-table td { padding: 8px 10px; }
+            .hide-mobile { display: none; }
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+        .no-results strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav style="position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid #d2d2d7;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:64px;">
+        <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#1A365D;font-weight:700;font-size:1.25rem;line-height:1;">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px;">
+                <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z" fill="#1a365d"></path>
+                <circle cx="50" cy="40" r="22" fill="white"></circle>
+                <path d="M50 24v18l12 7" stroke="#1a365d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>Days at the Office</span>
+        </a>
+        <div style="display:flex;gap:32px;align-items:center;">
+            <a href="/#features" style="color:#1A365D;text-decoration:none;font-size:0.95rem;">Features</a>
+            <a href="/#pricing" style="color:#1A365D;text-decoration:none;font-size:0.95rem;">Pricing</a>
+            <a href="/tools/" style="color:#1A365D;text-decoration:none;font-size:0.95rem;font-weight:600;">Tools</a>
+            <a href="/blog/how-to-track-office-days/" style="color:#1A365D;text-decoration:none;font-size:0.95rem;">Blog</a>
+            <a href="/#support" style="color:#1A365D;text-decoration:none;font-size:0.95rem;">Support</a>
+        </div>
+    </div>
+</nav>
+
+<div class="page-container">
+    <div class="breadcrumb">
+        <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; RTO Tracker
+    </div>
+
+    <h1>2026 Return-to-Office Tracker</h1>
+    <p class="page-subtitle">Which companies are requiring employees back in the office? A searchable, updated database of RTO policies from 40+ major companies.</p>
+    <p class="last-updated">📅 Last updated: <strong>February 21, 2026</strong> &nbsp;·&nbsp; Updated weekly</p>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-number red" id="stat-5day">0</div>
+            <div class="stat-label">5 Days Required</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number orange" id="stat-4day">0</div>
+            <div class="stat-label">4 Days Required</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number blue" id="stat-3day">0</div>
+            <div class="stat-label">3 Days Required</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number green" id="stat-flex">0</div>
+            <div class="stat-label">Flexible / Remote</div>
+        </div>
+    </div>
+
+    <p class="intro-text">
+        Return-to-office mandates accelerated sharply in 2025 and 2026. According to JLL, 55% of Fortune 100 companies now require five-day office attendance — up from just 5% in 2021. Meanwhile, 37% of companies are now actively enforcing attendance, up from 17% in 2024. This tracker covers major employer RTO policies so you can see where things stand. If your company is going hybrid, you may want to <a href="https://daysattheoffice.com/blog/how-to-track-office-days/">start tracking your office days</a>.
+    </p>
+
+    <!-- Search & Filter -->
+    <div class="controls">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search by company or industry...">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="5">5 Days</button>
+        <button class="filter-btn" data-filter="4">4 Days</button>
+        <button class="filter-btn" data-filter="3">3 Days</button>
+        <button class="filter-btn" data-filter="flex">Flexible</button>
+        <button class="filter-btn" data-filter="remote">Remote-First</button>
+    </div>
+
+    <p class="result-count" id="resultCount"></p>
+
+    <!-- Table -->
+    <table class="tracker-table" id="trackerTable">
+        <thead>
+            <tr>
+                <th data-sort="company">Company <span class="sort-icon">↕</span></th>
+                <th data-sort="industry" class="hide-mobile">Industry <span class="sort-icon">↕</span></th>
+                <th data-sort="days">Policy <span class="sort-icon">↕</span></th>
+                <th data-sort="date" class="hide-mobile">Effective <span class="sort-icon">↕</span></th>
+                <th class="hide-mobile">Details</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <div class="no-results" id="noResults" style="display:none;">
+        <strong>No companies match your search.</strong>
+        Try a different company name or clear your filters.
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h3>Tracking Your Own Office Days?</h3>
+        <p>If your company has an RTO policy, you should keep your own records. Days at the Office automatically tracks when you're in the office using GPS — no manual check-ins, no employer surveillance. Your data stays on your device.</p>
+        <a href="https://apps.apple.com/us/app/days-at-the-office/id6755411348" class="cta-button">Download Free on the App Store</a>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>Which companies are requiring 5 days in office in 2026?</h3>
+            <p>As of February 2026, companies requiring full-time, five-day office attendance include Amazon, JPMorgan Chase, AT&amp;T, Goldman Sachs, Paramount Skydance, Novo Nordisk, Home Depot, PNC Financial, Samsung (semiconductor division), Sherwin-Williams, and TikTok. The federal government has also mandated full return for most federal employees.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many companies have RTO mandates in 2026?</h3>
+            <p>According to JLL research, 55% of Fortune 100 companies now require five-day office attendance. Additionally, 37% of all companies are actively enforcing attendance policies in 2025, up from 17% in 2024. The trend is toward stricter requirements, with many hybrid policies quietly increasing required days.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Which companies still allow remote work in 2026?</h3>
+            <p>Several major companies maintain remote-first or highly flexible policies, including Spotify ("Work from Anywhere"), Airbnb, Dropbox ("Virtual First"), Coinbase, Reddit, and Zillow. However, fully remote options have decreased from 21% to 7% of companies between 2023 and 2024 according to industry surveys.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is "hybrid creep"?</h3>
+            <p>Hybrid creep refers to companies gradually increasing in-office requirements without making formal policy changes. According to Owl Labs research, while only 23% of employers formally changed their policies, the number of workers expected in 4 days per week rose from 32% to 34% in one year. Workers report being asked to come in more often without an official announcement.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I be fired for not following an RTO mandate?</h3>
+            <p>Potentially, yes. 47% of companies requiring five-day attendance plan to terminate or discipline non-compliant employees. 32% factor in-office attendance into performance reviews, and 29% consider office presence for promotions and pay raises. If your company has an RTO policy, it's important to keep your own records of your attendance.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How often is this tracker updated?</h3>
+            <p>We update this tracker weekly as new RTO policies are announced or existing policies change. Want to suggest a company or correction? Email us at <a href="mailto:bestdaylabs@gmail.com">bestdaylabs@gmail.com</a>.</p>
+        </div>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="internal-links">
+        <h3>Free Tools for Hybrid Workers</h3>
+        <ul>
+            <li><a href="/tools/commute-cost-calculator/">Commute Cost Calculator</a></li>
+            <li><a href="/tools/return-to-office-cost-calculator/">RTO Cost Calculator</a></li>
+            <li><a href="/tools/office-attendance-percentage-calculator/">Attendance Calculator</a></li>
+            <li><a href="/tools/hybrid-work-schedule-generator/">Schedule Generator</a></li>
+            <li><a href="/tools/best-days-to-go-into-the-office/">Best Office Days</a></li>
+            <li><a href="/blog/how-to-track-office-days/">How to Track Your Office Days</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:#1a1a2e;color:white;padding:60px 0 30px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;">
+            <div>
+                <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:white;font-weight:700;font-size:1.25rem;line-height:1;">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:36px;height:36px;">
+                        <path d="M50 5C30.67 5 15 20.67 15 40c0 25 35 55 35 55s35-30 35-55c0-19.33-15.67-35-35-35z" fill="currentColor"/>
+                        <circle cx="50" cy="40" r="22" fill="#1A365D"/>
+                        <path d="M50 24v18l12 7" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Days at the Office
+                </a>
+                <p style="color:#86868b;margin-top:16px;">A personal attendance tracker for hybrid workers. Know your office days without the hassle.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em;">Product</h4>
+                <ul style="list-style:none;">
+                    <li><a href="/#features" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Features</a></li>
+                    <li><a href="/#pricing" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em;">Resources</h4>
+                <ul style="list-style:none;">
+                    <li><a href="/tools/" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Free Tools</a></li>
+                    <li><a href="/blog/how-to-track-office-days/" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em;">Support</h4>
+                <ul style="list-style:none;">
+                    <li><a href="/#support" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Help Center</a></li>
+                    <li><a href="mailto:bestdaylabs@gmail.com" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom:20px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
+                <ul style="list-style:none;">
+                    <li><a href="/#privacy" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Privacy Policy</a></li>
+                    <li><a href="/#terms" style="color:#86868b;text-decoration:none;display:block;padding:8px 0;">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top:1px solid #333;padding-top:30px;text-align:center;color:#86868b;font-size:0.9rem;">
+            <p>&copy; 2025-2026 Days at the Office. All rights reserved.</p>
+            <p style="margin-top:8px;">Made with care for hybrid workers everywhere.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ======= COMPANY DATA =======
+// To add/update companies, just edit this array.
+// days: 5, 4, 3, "flex", "remote"
+const companies = [
+    // 5-day mandates
+    { company: "Amazon", industry: "Tech", days: 5, date: "2025-01", details: "350,000+ corporate employees required full-time in office starting January 2025." },
+    { company: "JPMorgan Chase", industry: "Finance", days: 5, date: "2025-04", details: "Ended all remote work arrangements. Full return required April 2025." },
+    { company: "AT&T", industry: "Telecom", days: 5, date: "2025-01", details: "Required 5 days per week starting January 2025." },
+    { company: "Goldman Sachs", industry: "Finance", days: 5, date: "2023-03", details: "Was one of the first major firms to require 5-day return. Strictly enforced." },
+    { company: "Paramount Skydance", industry: "Media", days: 5, date: "2026-01", details: "5 days required at LA and NY offices from January 2026. Offered severance to those who wouldn't return — ~600 accepted, costing $185M." },
+    { company: "Novo Nordisk", industry: "Pharma", days: 5, date: "2026-01", details: "All office-based employees full-time from January 2026. Global policy replacing previous mix of remote/hybrid options." },
+    { company: "Home Depot", industry: "Retail", days: 5, date: "2026-04", details: "Corporate employees back 5 days/week from April 6, 2026. Accompanied by cuts to some remote roles." },
+    { company: "PNC Financial", industry: "Finance", days: 5, date: "2026-05", details: "5 days in office starting May 4, 2026, ending hybrid arrangements." },
+    { company: "Samsung (Semiconductor)", industry: "Tech", days: 5, date: "2025-06", details: "US semiconductor division requires 5 days. Rolled out attendance tracking tools to monitor 'coffee badging.'" },
+    { company: "TikTok", industry: "Tech", days: 5, date: "2026-01", details: "Employees required in office 5 days/week starting 2026." },
+    { company: "Sherwin-Williams", industry: "Manufacturing", days: 5, date: "2025-09", details: "Ended 'Global Flexible Working' policy. 5 days required with 12 remote days per year (max 2/month)." },
+    { company: "Dell", industry: "Tech", days: 5, date: "2025-03", details: "Sales teams required 5 days. Remote employees reclassified and excluded from promotions." },
+    { company: "US Federal Government", industry: "Government", days: 5, date: "2025-01", details: "Executive order requiring full return for most federal employees, ending pandemic telework." },
+    { company: "Walmart", industry: "Retail", days: 5, date: "2025-01", details: "Corporate employees required full-time at Bentonville HQ as part of broader relocation strategy." },
+    { company: "Washington Post", industry: "Media", days: 5, date: "2025-06", details: "Eliminated all hybrid and remote roles entirely." },
+    { company: "Truist Financial", industry: "Finance", days: 5, date: "2026-01", details: "Moved from hybrid to full 5-day requirement for all previously hybrid staff, January 2026." },
+
+    // 4-day mandates
+    { company: "Apple", industry: "Tech", days: 4, date: "2025-01", details: "Requires 3 specific days (Tue/Thu + 1 flexible) but many teams pushed to 4. Strictly enforced via badge tracking." },
+    { company: "Starbucks", industry: "Food & Beverage", days: 4, date: "2025-01", details: "Corporate hubs in Seattle and Toronto moved to 4 defined 'common days.' Managers must relocate near offices." },
+    { company: "HSBC", industry: "Finance", days: 4, date: "2025-06", details: "4-day requirement for managing directors. Signaled stricter rules expanding to more staff." },
+    { company: "NBCUniversal", industry: "Media", days: 4, date: "2026-01", details: "4 days required Mon-Thu from January 2026, Fridays remain remote. Voluntary severance offered." },
+    { company: "WPP", industry: "Advertising", days: 4, date: "2025-09", details: "4-day mandate for 114,000 staff worldwide. Triggered employee petition with 18,000+ signatures." },
+    { company: "Ford", industry: "Automotive", days: 4, date: "2025-06", details: "At least 4 days required for corporate. Employees hacked office screens with 'F*** RTO' messages in protest." },
+    { company: "Southwest Airlines", industry: "Travel", days: 4, date: "2025-01", details: "Required 4-5 days per week in office, announced January 2025." },
+
+    // 3-day mandates
+    { company: "Google", industry: "Tech", days: 3, date: "2023-04", details: "3 days per week required. Office attendance factored into performance reviews." },
+    { company: "Microsoft", industry: "Tech", days: 3, date: "2026-02", details: "3 days/week for employees within 50 miles of an office. Rolling out in phases starting February 2026 from Puget Sound HQ." },
+    { company: "Meta", industry: "Tech", days: 3, date: "2023-09", details: "3 days required. Tracks badge data to monitor compliance." },
+    { company: "Apple", industry: "Tech", days: 3, date: "2022-09", details: "Officially 3 days (Tue, Thu, + 1 team day). Enforcement has varied by team." },
+    { company: "Citigroup", industry: "Finance", days: 3, date: "2025-01", details: "3-day hybrid model with swipe card attendance tracking in UK and US. Non-compliance affects performance reviews." },
+    { company: "Disney", industry: "Media", days: 3, date: "2023-03", details: "CEO Bob Iger mandated 4 days initially, settled on 3 after pushback." },
+    { company: "IBM", industry: "Tech", days: 3, date: "2025-01", details: "Executives and managers must be in office at least 3 days/week." },
+    { company: "US Bank", industry: "Finance", days: 3, date: "2025-03", details: "Hybrid and remote employees required 3+ days per week from March 2025." },
+    { company: "Netflix", industry: "Media", days: 3, date: "2024-01", details: "Generally 3+ days expected. Strong in-person culture promoted by leadership." },
+    { company: "Charles Schwab", industry: "Finance", days: 3, date: "2024-06", details: "3 days per week required for hybrid employees." },
+
+    // Flexible / hybrid-friendly
+    { company: "Salesforce", industry: "Tech", days: "flex", date: "2023-01", details: "Office-flex (1-3 days), office-based (4-5 days), or fully remote depending on role. Generally employee-choice." },
+    { company: "HubSpot", industry: "Tech", days: "flex", date: "2022-01", details: "@office (3+ days), @flex (≤2 days), or @home options. Employees choose annually." },
+    { company: "Zoom", industry: "Tech", days: "flex", date: "2023-08", details: "2 days per week for employees within 50 miles of an office. Described policy as an ongoing experiment." },
+    { company: "Slack", industry: "Tech", days: "flex", date: "2023-01", details: "Flexible with quarterly in-person gatherings. Remote-first culture maintained." },
+
+    // Remote-first
+    { company: "Spotify", industry: "Tech", days: "remote", date: "2021-02", details: "'Work From Anywhere' program. Employees choose where to work — home, office, or co-working space." },
+    { company: "Airbnb", industry: "Tech", days: "remote", date: "2022-04", details: "Work from anywhere policy. Can live and work in 170+ countries for up to 90 days per location." },
+    { company: "Dropbox", industry: "Tech", days: "remote", date: "2020-10", details: "'Virtual First' model. Offices converted to collaborative 'studios' for optional meetups." },
+    { company: "Coinbase", industry: "Finance", days: "remote", date: "2022-01", details: "Remote-first. Offices are optional. No location-based pay adjustments within the US." },
+    { company: "Reddit", industry: "Tech", days: "remote", date: "2020-10", details: "Employees choose remote, hybrid, or in-office. Same pay regardless of location within the country." },
+    { company: "Zillow", industry: "Real Estate", days: "remote", date: "2023-01", details: "Majority of roles are remote-eligible. Flexible with strong remote culture." },
+];
+
+// ======= RENDER LOGIC =======
+const tableBody = document.getElementById('tableBody');
+const searchBox = document.getElementById('searchBox');
+const resultCount = document.getElementById('resultCount');
+const noResults = document.getElementById('noResults');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+let currentFilter = 'all';
+let currentSort = { key: 'days', dir: 'asc' };
+
+function getPolicyLabel(days) {
+    if (days === 5) return '<span class="policy-badge policy-5">5 days/week</span>';
+    if (days === 4) return '<span class="policy-badge policy-4">4 days/week</span>';
+    if (days === 3) return '<span class="policy-badge policy-3">3 days/week</span>';
+    if (days === 'flex') return '<span class="policy-badge policy-flex">Flexible</span>';
+    if (days === 'remote') return '<span class="policy-badge policy-remote">Remote-First</span>';
+    return days;
+}
+
+function getDaySortValue(days) {
+    if (days === 5) return 5;
+    if (days === 4) return 4;
+    if (days === 3) return 3;
+    if (days === 'flex') return 2;
+    if (days === 'remote') return 1;
+    return 0;
+}
+
+function formatDate(dateStr) {
+    const [year, month] = dateStr.split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[parseInt(month)-1] + ' ' + year;
+}
+
+function filterAndSort() {
+    const query = searchBox.value.toLowerCase().trim();
+    let filtered = companies.filter(c => {
+        const matchesSearch = !query ||
+            c.company.toLowerCase().includes(query) ||
+            c.industry.toLowerCase().includes(query) ||
+            c.details.toLowerCase().includes(query);
+
+        const matchesFilter = currentFilter === 'all' ||
+            (currentFilter === '5' && c.days === 5) ||
+            (currentFilter === '4' && c.days === 4) ||
+            (currentFilter === '3' && c.days === 3) ||
+            (currentFilter === 'flex' && c.days === 'flex') ||
+            (currentFilter === 'remote' && c.days === 'remote');
+
+        return matchesSearch && matchesFilter;
+    });
+
+    // Sort
+    filtered.sort((a, b) => {
+        let valA, valB;
+        switch(currentSort.key) {
+            case 'company':
+                valA = a.company.toLowerCase();
+                valB = b.company.toLowerCase();
+                return currentSort.dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            case 'industry':
+                valA = a.industry.toLowerCase();
+                valB = b.industry.toLowerCase();
+                return currentSort.dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            case 'days':
+                valA = getDaySortValue(a.days);
+                valB = getDaySortValue(b.days);
+                return currentSort.dir === 'asc' ? valB - valA : valA - valB;
+            case 'date':
+                return currentSort.dir === 'asc' ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date);
+            default:
+                return 0;
+        }
+    });
+
+    return filtered;
+}
+
+function render() {
+    const filtered = filterAndSort();
+
+    // Update stats
+    document.getElementById('stat-5day').textContent = companies.filter(c => c.days === 5).length;
+    document.getElementById('stat-4day').textContent = companies.filter(c => c.days === 4).length;
+    document.getElementById('stat-3day').textContent = companies.filter(c => c.days === 3).length;
+    document.getElementById('stat-flex').textContent = companies.filter(c => c.days === 'flex' || c.days === 'remote').length;
+
+    // Result count
+    resultCount.textContent = `Showing ${filtered.length} of ${companies.length} companies`;
+
+    // No results
+    noResults.style.display = filtered.length === 0 ? 'block' : 'none';
+    document.getElementById('trackerTable').style.display = filtered.length === 0 ? 'none' : 'table';
+
+    // Render rows
+    tableBody.innerHTML = filtered.map(c => `
+        <tr>
+            <td><span class="company-name">${c.company}</span></td>
+            <td class="hide-mobile"><span class="industry-tag">${c.industry}</span></td>
+            <td>${getPolicyLabel(c.days)}</td>
+            <td class="hide-mobile">${formatDate(c.date)}</td>
+            <td class="hide-mobile">${c.details}</td>
+        </tr>
+    `).join('');
+}
+
+// Search
+searchBox.addEventListener('input', render);
+
+// Filters
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+    });
+});
+
+// Sort
+document.querySelectorAll('.tracker-table th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (currentSort.key === key) {
+            currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSort = { key, dir: 'asc' };
+        }
+        // Update header styles
+        document.querySelectorAll('.tracker-table th').forEach(h => h.classList.remove('sorted'));
+        th.classList.add('sorted');
+        th.querySelector('.sort-icon').textContent = currentSort.dir === 'asc' ? '↑' : '↓';
+        render();
+    });
+});
+
+// Initial render
+render();
+</script>
+
+</body>
+</html>
