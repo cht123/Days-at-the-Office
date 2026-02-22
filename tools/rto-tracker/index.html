@@ -106,7 +106,7 @@
         }
 
         .page-container {
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 104px 24px 80px;
         }
@@ -452,8 +452,12 @@
     </div>
 
     <p class="intro-text">
-        Return-to-office mandates accelerated sharply in 2025 and 2026. According to JLL, 55% of Fortune 100 companies now require five-day office attendance — up from just 5% in 2021. Meanwhile, 37% of companies are now actively enforcing attendance, up from 17% in 2024. This tracker covers major employer RTO policies so you can see where things stand. If your company is going hybrid, you may want to <a href="https://daysattheoffice.com/blog/how-to-track-office-days/">start tracking your office days</a>.
+        Return-to-office mandates accelerated sharply in 2025 and 2026. According to JLL, 55% of Fortune 100 companies now require five-day office attendance — up from just 5% in 2021. Meanwhile, 37% of companies are now actively enforcing attendance, up from 17% in 2024. This tracker covers major employer RTO policies so you can see where things stand. If your company is going hybrid, you may want to <a href="/blog/how-to-track-office-days/">start tracking your office days</a>.
     </p>
+
+    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px 18px;margin-bottom:28px;font-size:13px;color:#92400e;line-height:1.6;">
+        <strong>Disclaimer:</strong> This tracker is compiled from public news reports and official company announcements. Policies may vary by role, team, location, or seniority. Some policies may have changed since our last update. We link to original sources where available so you can verify details. Have a correction or addition? <a href="mailto:bestdaylabs@gmail.com" style="color:#92400e;font-weight:600;">Email us</a>.
+    </div>
 
     <!-- Search & Filter -->
     <div class="controls">
@@ -477,6 +481,7 @@
                 <th data-sort="days">Policy <span class="sort-icon">↕</span></th>
                 <th data-sort="date" class="hide-mobile">Effective <span class="sort-icon">↕</span></th>
                 <th class="hide-mobile">Details</th>
+                <th class="hide-mobile">Source</th>
             </tr>
         </thead>
         <tbody id="tableBody">
@@ -596,65 +601,9 @@
 </footer>
 
 <script>
-// ======= COMPANY DATA =======
-// To add/update companies, just edit this array.
-// days: 5, 4, 3, "flex", "remote"
-const companies = [
-    // 5-day mandates
-    { company: "Amazon", industry: "Tech", days: 5, date: "2025-01", details: "350,000+ corporate employees required full-time in office starting January 2025." },
-    { company: "JPMorgan Chase", industry: "Finance", days: 5, date: "2025-04", details: "Ended all remote work arrangements. Full return required April 2025." },
-    { company: "AT&T", industry: "Telecom", days: 5, date: "2025-01", details: "Required 5 days per week starting January 2025." },
-    { company: "Goldman Sachs", industry: "Finance", days: 5, date: "2023-03", details: "Was one of the first major firms to require 5-day return. Strictly enforced." },
-    { company: "Paramount Skydance", industry: "Media", days: 5, date: "2026-01", details: "5 days required at LA and NY offices from January 2026. Offered severance to those who wouldn't return — ~600 accepted, costing $185M." },
-    { company: "Novo Nordisk", industry: "Pharma", days: 5, date: "2026-01", details: "All office-based employees full-time from January 2026. Global policy replacing previous mix of remote/hybrid options." },
-    { company: "Home Depot", industry: "Retail", days: 5, date: "2026-04", details: "Corporate employees back 5 days/week from April 6, 2026. Accompanied by cuts to some remote roles." },
-    { company: "PNC Financial", industry: "Finance", days: 5, date: "2026-05", details: "5 days in office starting May 4, 2026, ending hybrid arrangements." },
-    { company: "Samsung (Semiconductor)", industry: "Tech", days: 5, date: "2025-06", details: "US semiconductor division requires 5 days. Rolled out attendance tracking tools to monitor 'coffee badging.'" },
-    { company: "TikTok", industry: "Tech", days: 5, date: "2026-01", details: "Employees required in office 5 days/week starting 2026." },
-    { company: "Sherwin-Williams", industry: "Manufacturing", days: 5, date: "2025-09", details: "Ended 'Global Flexible Working' policy. 5 days required with 12 remote days per year (max 2/month)." },
-    { company: "Dell", industry: "Tech", days: 5, date: "2025-03", details: "Sales teams required 5 days. Remote employees reclassified and excluded from promotions." },
-    { company: "US Federal Government", industry: "Government", days: 5, date: "2025-01", details: "Executive order requiring full return for most federal employees, ending pandemic telework." },
-    { company: "Walmart", industry: "Retail", days: 5, date: "2025-01", details: "Corporate employees required full-time at Bentonville HQ as part of broader relocation strategy." },
-    { company: "Washington Post", industry: "Media", days: 5, date: "2025-06", details: "Eliminated all hybrid and remote roles entirely." },
-    { company: "Truist Financial", industry: "Finance", days: 5, date: "2026-01", details: "Moved from hybrid to full 5-day requirement for all previously hybrid staff, January 2026." },
+// ======= LOAD DATA FROM JSON =======
+let companies = [];
 
-    // 4-day mandates
-    { company: "Apple", industry: "Tech", days: 4, date: "2025-01", details: "Requires 3 specific days (Tue/Thu + 1 flexible) but many teams pushed to 4. Strictly enforced via badge tracking." },
-    { company: "Starbucks", industry: "Food & Beverage", days: 4, date: "2025-01", details: "Corporate hubs in Seattle and Toronto moved to 4 defined 'common days.' Managers must relocate near offices." },
-    { company: "HSBC", industry: "Finance", days: 4, date: "2025-06", details: "4-day requirement for managing directors. Signaled stricter rules expanding to more staff." },
-    { company: "NBCUniversal", industry: "Media", days: 4, date: "2026-01", details: "4 days required Mon-Thu from January 2026, Fridays remain remote. Voluntary severance offered." },
-    { company: "WPP", industry: "Advertising", days: 4, date: "2025-09", details: "4-day mandate for 114,000 staff worldwide. Triggered employee petition with 18,000+ signatures." },
-    { company: "Ford", industry: "Automotive", days: 4, date: "2025-06", details: "At least 4 days required for corporate. Employees hacked office screens with 'F*** RTO' messages in protest." },
-    { company: "Southwest Airlines", industry: "Travel", days: 4, date: "2025-01", details: "Required 4-5 days per week in office, announced January 2025." },
-
-    // 3-day mandates
-    { company: "Google", industry: "Tech", days: 3, date: "2023-04", details: "3 days per week required. Office attendance factored into performance reviews." },
-    { company: "Microsoft", industry: "Tech", days: 3, date: "2026-02", details: "3 days/week for employees within 50 miles of an office. Rolling out in phases starting February 2026 from Puget Sound HQ." },
-    { company: "Meta", industry: "Tech", days: 3, date: "2023-09", details: "3 days required. Tracks badge data to monitor compliance." },
-    { company: "Apple", industry: "Tech", days: 3, date: "2022-09", details: "Officially 3 days (Tue, Thu, + 1 team day). Enforcement has varied by team." },
-    { company: "Citigroup", industry: "Finance", days: 3, date: "2025-01", details: "3-day hybrid model with swipe card attendance tracking in UK and US. Non-compliance affects performance reviews." },
-    { company: "Disney", industry: "Media", days: 3, date: "2023-03", details: "CEO Bob Iger mandated 4 days initially, settled on 3 after pushback." },
-    { company: "IBM", industry: "Tech", days: 3, date: "2025-01", details: "Executives and managers must be in office at least 3 days/week." },
-    { company: "US Bank", industry: "Finance", days: 3, date: "2025-03", details: "Hybrid and remote employees required 3+ days per week from March 2025." },
-    { company: "Netflix", industry: "Media", days: 3, date: "2024-01", details: "Generally 3+ days expected. Strong in-person culture promoted by leadership." },
-    { company: "Charles Schwab", industry: "Finance", days: 3, date: "2024-06", details: "3 days per week required for hybrid employees." },
-
-    // Flexible / hybrid-friendly
-    { company: "Salesforce", industry: "Tech", days: "flex", date: "2023-01", details: "Office-flex (1-3 days), office-based (4-5 days), or fully remote depending on role. Generally employee-choice." },
-    { company: "HubSpot", industry: "Tech", days: "flex", date: "2022-01", details: "@office (3+ days), @flex (≤2 days), or @home options. Employees choose annually." },
-    { company: "Zoom", industry: "Tech", days: "flex", date: "2023-08", details: "2 days per week for employees within 50 miles of an office. Described policy as an ongoing experiment." },
-    { company: "Slack", industry: "Tech", days: "flex", date: "2023-01", details: "Flexible with quarterly in-person gatherings. Remote-first culture maintained." },
-
-    // Remote-first
-    { company: "Spotify", industry: "Tech", days: "remote", date: "2021-02", details: "'Work From Anywhere' program. Employees choose where to work — home, office, or co-working space." },
-    { company: "Airbnb", industry: "Tech", days: "remote", date: "2022-04", details: "Work from anywhere policy. Can live and work in 170+ countries for up to 90 days per location." },
-    { company: "Dropbox", industry: "Tech", days: "remote", date: "2020-10", details: "'Virtual First' model. Offices converted to collaborative 'studios' for optional meetups." },
-    { company: "Coinbase", industry: "Finance", days: "remote", date: "2022-01", details: "Remote-first. Offices are optional. No location-based pay adjustments within the US." },
-    { company: "Reddit", industry: "Tech", days: "remote", date: "2020-10", details: "Employees choose remote, hybrid, or in-office. Same pay regardless of location within the country." },
-    { company: "Zillow", industry: "Real Estate", days: "remote", date: "2023-01", details: "Majority of roles are remote-eligible. Flexible with strong remote culture." },
-];
-
-// ======= RENDER LOGIC =======
 const tableBody = document.getElementById('tableBody');
 const searchBox = document.getElementById('searchBox');
 const resultCount = document.getElementById('resultCount');
@@ -663,6 +612,18 @@ const filterBtns = document.querySelectorAll('.filter-btn');
 
 let currentFilter = 'all';
 let currentSort = { key: 'days', dir: 'asc' };
+
+// Load data from external JSON file
+fetch('data.json')
+    .then(r => r.json())
+    .then(data => {
+        companies = data;
+        render();
+    })
+    .catch(() => {
+        // Fallback: if JSON fails to load, show error
+        tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:#dc2626;">Failed to load company data. Please refresh the page.</td></tr>';
+    });
 
 function getPolicyLabel(days) {
     if (days === 5) return '<span class="policy-badge policy-5">5 days/week</span>';
@@ -756,6 +717,7 @@ function render() {
             <td>${getPolicyLabel(c.days)}</td>
             <td class="hide-mobile">${formatDate(c.date)}</td>
             <td class="hide-mobile">${c.details}</td>
+            <td class="hide-mobile">${c.source ? `<a href="${c.source}" target="_blank" rel="noopener" class="source-link">${c.sourceLabel || 'Source'}</a>` : '<span style="color:#ccc;">—</span>'}</td>
         </tr>
     `).join('');
 }
