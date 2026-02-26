@@ -54,6 +54,24 @@
         "sourceLabel": ""
     },
     {
+        "company": "Instagram",
+        "industry": "Tech",
+        "days": 5,
+        "date": "2026-02",
+        "details": "CEO Adam Mosseri mandated all US employees with assigned desks return 5 days per week from February 2, 2026. Stricter than parent Meta's 3-day hybrid policy. Also canceled recurring meetings every 6 months.",
+        "source": "https://www.engadget.com/social-media/instagram-mandates-total-return-to-office-for-employees-in-2026-212738225.html",
+        "sourceLabel": "Engadget"
+    },
+    {
+        "company": "Ubisoft",
+        "industry": "Tech",
+        "days": 5,
+        "date": "2026-01",
+        "details": "Escalated from 3-day hybrid to full 5-day in-office requirement for all teams in January 2026. Employees given annual allowance of WFH days instead. Over 1,200 employees went on strike in protest.",
+        "source": "https://www.pcgamer.com/gaming-industry/dont-call-it-a-layoff-ubisoft-issues-a-full-return-to-office-order-for-all-employees-as-it-confirms-more-studio-closures-are-coming/",
+        "sourceLabel": "PC Gamer"
+    },
+    {
         "company": "Home Depot",
         "industry": "Retail",
         "days": 5,
@@ -66,10 +84,10 @@
         "company": "PNC Financial",
         "industry": "Finance",
         "days": 5,
-        "date": "2025-09",
-        "details": "Required all employees back to the office 5 days per week, ending hybrid arrangements for corporate staff.",
-        "source": "https://www.bloomberg.com/news/articles/2025-01-23/pnc-financial-latest-to-call-staff-back-to-the-office-full-time",
-        "sourceLabel": "Bloomberg"
+        "date": "2026-05",
+        "details": "CEO Bill Demchak mandated all employees return 5 days per week starting May 4, 2026, ending remaining pandemic-era hybrid flexibility for ~55,000 employees.",
+        "source": "https://www.bankingdive.com/news/pnc-mandates-5-day-rto-starting-may-4/809758/",
+        "sourceLabel": "Banking Dive"
     },
     {
         "company": "Samsung (Semiconductor)",
@@ -103,9 +121,9 @@
         "industry": "Tech",
         "days": 5,
         "date": "2025-03",
-        "details": "Sales teams required 5 days. Remote employees reclassified and effectively excluded from promotions and internal transfers.",
-        "source": "https://www.businessinsider.com/dell-return-to-office-policy-remote-workers-promotion-2024-2",
-        "sourceLabel": "Business Insider"
+        "details": "CEO Michael Dell retired hybrid policy entirely. All employees near any of 41 US offices required 5 days per week from March 2025. All future roles hired for specific office locations.",
+        "source": "https://fortune.com/2025/01/31/dell-ceo-hybrid-work-return-to-office/",
+        "sourceLabel": "Fortune"
     },
     {
         "company": "US Federal Government",
@@ -174,8 +192,8 @@
         "company": "NBCUniversal",
         "industry": "Media",
         "days": 4,
-        "date": "2025-09",
-        "details": "Required 4 days in office Monday through Thursday, with Fridays remaining remote. Offered voluntary severance to those who preferred not to comply.",
+        "date": "2026-01",
+        "details": "Required hybrid employees to return 4 days per week (Mon-Thu) starting January 5, 2026. Fridays remain remote. Offered voluntary severance to those who preferred not to comply.",
         "source": "https://www.wsj.com/business/media/comcast-nbcuniversal-return-to-office-four-days-a-week-9bb6a0d4",
         "sourceLabel": "Wall Street Journal"
     },
@@ -211,18 +229,18 @@
         "industry": "Tech",
         "days": 3,
         "date": "2023-04",
-        "details": "Requires 3 days per week in office. Office attendance factored into performance reviews, and some remote workers asked to return or accept buyouts.",
-        "source": "https://www.cnbc.com/2023/06/08/google-to-crack-down-on-office-attendance-asks-remote-workers-to-reconsider.html",
+        "details": "Requires 3 days per week in office. In October 2025 tightened 'Work from Anywhere' policy and gave remote employees ultimatum to switch to hybrid or take voluntary exit packages.",
+        "source": "https://www.cnbc.com/2025/10/08/google-adds-limits-to-work-from-anywhere-policy-that-began-in-covid.html",
         "sourceLabel": "CNBC"
     },
     {
         "company": "Microsoft",
         "industry": "Tech",
         "days": 3,
-        "date": "2025-02",
-        "details": "Requires at least 3 days per week for employees within 50 miles of an office. CEO Satya Nadella emphasized flexibility as a competitive advantage.",
-        "source": "https://www.businessinsider.com/microsoft-return-to-office-hybrid-policy-flexible-work-2024",
-        "sourceLabel": "Business Insider"
+        "date": "2026-02",
+        "details": "Formalized 3-day in-office mandate starting February 23, 2026, beginning with 50,000+ Puget Sound employees within 50 miles of an office. Phased rollout to other US and international locations through 2026.",
+        "source": "https://komonews.com/news/local/microsoft-mandate-in-office-three-days-per-week-for-employees-in-2026-february-puget-sound-redmond-area-workers-united-states-tech-return-to-work-hybrid-flexible-schedules",
+        "sourceLabel": "KOMO News"
     },
     {
         "company": "Meta",
@@ -483,6 +501,33 @@
         "date": "2025-09",
         "details": "Increased in-office requirement to 4 days per week for most employees, up from the previous 3-day hybrid model.",
         "source": "https://www.bloomberg.com/news/articles/2025-06-09/bny-mellon-orders-employees-back-to-office-four-days-a-week",
+        "sourceLabel": "Bloomberg"
+    },
+    {
+        "company": "Scotiabank",
+        "industry": "Finance",
+        "days": 4,
+        "date": "2025-09",
+        "details": "Head-office employees in Greater Toronto Area required 4+ days per week starting September 15, 2025. Teams with limited office space start at 3 days with plans to increase.",
+        "source": "https://www.bloomberg.com/news/articles/2025-06-09/scotiabank-calls-its-head-office-staff-back-in-four-days-a-week",
+        "sourceLabel": "Bloomberg"
+    },
+    {
+        "company": "Royal Bank of Canada (RBC)",
+        "industry": "Finance",
+        "days": 4,
+        "date": "2025-09",
+        "details": "Canada's largest bank required hybrid employees to return 4 days per week starting September 2025, up from 3 days. First major Canadian bank to mandate 4-day attendance.",
+        "source": "https://www.theglobeandmail.com/business/article-rbc-raises-return-to-office-requirement-employees/",
+        "sourceLabel": "Globe and Mail"
+    },
+    {
+        "company": "TD Bank",
+        "industry": "Finance",
+        "days": 4,
+        "date": "2025-11",
+        "details": "Required all employees to work in office 4 days per week. Executives started October 6, non-executive staff from November 3, 2025. Some departments phased in through early 2026.",
+        "source": "https://www.bloomberg.com/news/articles/2025-07-23/td-orders-staff-back-to-office-four-days-a-week-later-this-year",
         "sourceLabel": "Bloomberg"
     },
     {
@@ -837,13 +882,13 @@
         "sourceLabel": "The Verge"
     },
     {
-        "company": "Toyota (US)",
+        "company": "Toyota (North America)",
         "industry": "Automotive",
-        "days": 3,
-        "date": "2024-01",
-        "details": "US corporate employees required in office at least 3 days per week. Manufacturing and engineering roles are fully on-site.",
-        "source": "",
-        "sourceLabel": ""
+        "days": 4,
+        "date": "2025-09",
+        "details": "All salaried North American staff required in office Mon-Thu starting September 2, 2025. Employees who moved away during remote era must relocate. Non-compliance may result in termination.",
+        "source": "https://www.bloomberg.com/news/articles/2025-01-13/toyota-wants-workers-in-office-four-days-a-week-starting-sept-2",
+        "sourceLabel": "Bloomberg"
     },
     {
         "company": "Verizon",
@@ -893,11 +938,11 @@
     {
         "company": "3M",
         "industry": "Manufacturing",
-        "days": 3,
-        "date": "2024-01",
-        "details": "Hybrid model requiring corporate employees to be in office at least 3 days per week. Lab and manufacturing roles are on-site.",
-        "source": "",
-        "sourceLabel": ""
+        "days": 4,
+        "date": "2025-09",
+        "details": "CEO Bill Brown ended 'Work Your Way' policy and required 4 days per week starting September 2025. Ended five years of remote flexibility. Some teams waiting for office renovations through late 2026.",
+        "source": "https://www.axios.com/local/twin-cities/2025/07/08/3m-calls-office-workers-back-four-days-a-week",
+        "sourceLabel": "Axios"
     },
     {
         "company": "General Electric",
