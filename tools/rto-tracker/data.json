@@ -40,18 +40,18 @@
         "industry": "Media",
         "days": 5,
         "date": "2026-01",
-        "details": "After Skydance acquired Paramount, mandated 5 days at LA and NY offices from January 2026. Offered severance to those who wouldn't return.",
-        "source": "",
-        "sourceLabel": ""
+        "details": "After Skydance acquired Paramount, mandated 5 days at LA and NY offices from January 5, 2026. Around 600 employees took a buyout rather than return, costing roughly $185 million.",
+        "source": "https://www.newsweek.com/list-of-companies-calling-workers-back-to-office-in-2026-11242468",
+        "sourceLabel": "Newsweek"
     },
     {
         "company": "Novo Nordisk",
         "industry": "Pharma",
         "days": 5,
         "date": "2026-01",
-        "details": "All office-based employees required full-time in office from January 2026, replacing previous hybrid and remote options globally.",
-        "source": "",
-        "sourceLabel": ""
+        "details": "Announced September 2025 that all office-based employees must return full-time from January 1, 2026, replacing previous hybrid and remote options globally.",
+        "source": "https://www.newsweek.com/list-of-companies-calling-workers-back-to-office-in-2026-11242468",
+        "sourceLabel": "Newsweek"
     },
     {
         "company": "Instagram",
@@ -76,9 +76,9 @@
         "industry": "Retail",
         "days": 5,
         "date": "2026-04",
-        "details": "Corporate employees required back 5 days per week from April 6, 2026, accompanied by cuts to some remote-eligible roles.",
-        "source": "",
-        "sourceLabel": ""
+        "details": "CEO Ted Decker mandated corporate employees return 5 days per week from April 6, 2026. Simultaneously laid off 800 workers, mostly remote roles in technology. Cited need for 'speed and agility.'",
+        "source": "https://www.cnbc.com/2026/01/28/home-depot-layoffs-return-to-office.html",
+        "sourceLabel": "CNBC"
     },
     {
         "company": "PNC Financial",
@@ -111,10 +111,10 @@
         "company": "Sherwin-Williams",
         "industry": "Manufacturing",
         "days": 5,
-        "date": "2025-09",
-        "details": "Ended 'Global Flexible Working' policy. Required 5-day in-office attendance with only 12 remote days per year (max 2 per month).",
-        "source": "https://www.wsj.com/lifestyle/workplace/sherwin-williams-return-to-office-8f90b6f1",
-        "sourceLabel": "Wall Street Journal"
+        "date": "2026-01",
+        "details": "CEO Heidi Petz ended hybrid policy. All US and Canada office employees required 5 days in-office from January 1, 2026, with 12 remote days per year (max 2/month). Coincides with move into new 36-story Cleveland HQ.",
+        "source": "https://www.wkyc.com/article/news/local/cleveland/sherwin-williams-announces-end-of-hybrid-work-schedule-will-require-employees-office-starting-2026/95-6b6528b0-e1fa-4a8c-80a5-bdb907b90158",
+        "sourceLabel": "WKYC"
     },
     {
         "company": "Dell",
@@ -157,9 +157,9 @@
         "industry": "Finance",
         "days": 5,
         "date": "2026-01",
-        "details": "Moved from hybrid to full 5-day requirement for all previously hybrid staff starting January 2026.",
-        "source": "",
-        "sourceLabel": ""
+        "details": "The $544 billion-asset bank moved from hybrid to full 5-day requirement for all staff starting January 5, 2026. Previously had gradually tightened from 3 to 4 days.",
+        "source": "https://www.bankingdive.com/news/truist-rto-employees-in-office-5-days-banking/805291/",
+        "sourceLabel": "Banking Dive"
     },
     {
         "company": "Apple",
@@ -1015,5 +1015,41 @@
         "details": "Hybrid model for corporate employees with at least 3 days expected in office. Entertainment and game studio roles vary by division.",
         "source": "",
         "sourceLabel": ""
+    },
+    {
+        "company": "Intel",
+        "industry": "Tech",
+        "days": 4,
+        "date": "2025-09",
+        "details": "CEO Lip-Bu Tan mandated employees return to office 4 days per week starting September 1, 2025, up from the previous 3-day hybrid policy. Tan cited uneven adherence to the prior policy and emphasized in-person work drives better decision-making.",
+        "source": "https://techcrunch.com/2025/04/24/intel-mandates-four-days-in-the-office/",
+        "sourceLabel": "TechCrunch"
+    },
+    {
+        "company": "Nvidia",
+        "industry": "Tech",
+        "days": "flex",
+        "date": "2023-01",
+        "details": "Nvidia maintains a flexible, team-driven model with no company-wide RTO mandate. CEO Jensen Huang has stated he has no issue with employees working from home indefinitely. Individual managers determine remote work arrangements.",
+        "source": "https://fortune.com/2025/03/06/companies-with-remote-hybrid-work-options-spotify-nvidia-zillow-pintrest-microsoft/",
+        "sourceLabel": "Fortune"
+    },
+    {
+        "company": "Rogers Communications",
+        "industry": "Telecom",
+        "days": 5,
+        "date": "2026-02",
+        "details": "Rogers required corporate employees to be in the office 4 days per week starting October 2025, increasing to 5 days per week by February 2026. The staggered approach was designed to help employees adjust.",
+        "source": "https://www.hcamag.com/ca/specialization/employee-engagement/rogers-communications-wants-workers-back-in-office-5-days-per-week/543998",
+        "sourceLabel": "HRD Canada"
+    },
+    {
+        "company": "BMO (Bank of Montreal)",
+        "industry": "Finance",
+        "days": 4,
+        "date": "2025-09",
+        "details": "Bank of Montreal required employees to return to office 4 days per week starting September 15, 2025, following similar moves by RBC and Scotiabank. The directive applies where office space permits.",
+        "source": "https://www.bloomberg.com/news/articles/2025-06-26/bmo-is-latest-bank-to-call-staff-back-to-office-four-days-a-week",
+        "sourceLabel": "Bloomberg"
     }
 ]
