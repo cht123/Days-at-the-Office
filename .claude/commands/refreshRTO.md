@@ -83,7 +83,21 @@ Run this command to validate the JSON:
 python3 -c "import json; data=json.load(open('tools/rto-tracker/data.json')); print(f'{len(data)} companies, valid JSON')"
 ```
 
-### 8. Commit and push
+### 8. Set up git credentials
+
+Before committing, configure HTTPS push access by reading the token from `.env`:
+
+```bash
+cd tools/rto-tracker/../../  # repo root
+export $(grep GITHUB_TOKEN .env)
+git remote set-url origin https://github.com/BestDayLabs/Days_at_the_Office_Website.git
+git config credential.helper store
+echo "https://cht123:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+git config user.email "michaelxtaylor@gmail.com"
+git config user.name "Michael Taylor"
+```
+
+### 9. Commit and push
 
 Stage the changed files, commit with a descriptive message like:
 
@@ -93,7 +107,7 @@ Update RTO tracker: X companies (added Y, updated Z)
 
 Then push to origin/main.
 
-### 9. Report
+### 10. Report
 
 Tell the user:
 - How many total companies are now in the tracker
